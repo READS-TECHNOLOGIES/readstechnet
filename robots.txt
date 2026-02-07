@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+# Allow all common crawlers
+User-agent: Googlebot
+Allow: /
+User-agent: Bingbot
+Allow: /
+User-agent: Slurp
+Allow: /
+# Sitemap location
+Sitemap: https://readstechnet.vercel.app/sitemap.xml
