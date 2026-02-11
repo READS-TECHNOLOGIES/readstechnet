@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
         // Setup email data
         const mailData = {
             from: process.env.SMTP_USER, // The sending email address
-            to: 'readstechnologies@gmail.com, // The recipient email address for $READS
+            to: 'readstechnologies@gmail.com', // The recipient email address for READS
             subject: `Contact Form Submission: ${subject}`,
             html: `
                 <p><strong>Name:</strong> ${name}</p>
