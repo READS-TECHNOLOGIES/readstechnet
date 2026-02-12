@@ -129,12 +129,12 @@
       </div>
 
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="token.html">Token</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="index">Home</a></li>
+        <li><a href="about">About</a></li>
+        <li><a href="features">Features</a></li>
+        <li><a href="team">Team</a></li>
+        <li><a href="token">Token</a></li>
+        <li><a href="contact" class="active">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -204,31 +204,31 @@
         <a href="https://www.linkedin.com/in/reads-technologies-39a947377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><img src="assets/linkedin-icon.png" alt="LinkedIn"></a>
       </div>
     </div>
-<div class="footer-section">
+    <div class="footer-section">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="features.html">Features</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="token.html">Token</a></li>
-          <li><a href="partner.html">Partnerships</a></li>
+          <li><a href="index">Home</a></li>
+          <li><a href="about">About Us</a></li>
+          <li><a href="features">Features</a></li>
+          <li><a href="team">Team</a></li>
+          <li><a href="token">Token</a></li>
+          <li><a href="partner">Partnerships</a></li>
         </ul>
       </div>
 
     <div class="footer-section">
       <h4>Legal</h4>
       <ul>
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="terms-of-service.html">Terms of Service</a></li>
-        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="privacy-policy">Privacy Policy</a></li>
+        <li><a href="terms-of-service">Terms of Service</a></li>
+        <li><a href="disclaimer">Disclaimer</a></li>
       </ul>
     </div>
     <div class="footer-section">
       <h4>Support</h4>
       <ul>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="faq">FAQ</a></li>
+        <li><a href="contact">Contact Us</a></li>
       </ul>
     </div>
   </div>
@@ -259,9 +259,9 @@
       // Create notification element
       const notification = document.createElement('div');
       notification.className = `notification ${type}`;
-      
+
       const icon = type === 'success' ? '✓' : '✕';
-      
+
       notification.innerHTML = `
         <div class="notification-icon">${icon}</div>
         <div class="notification-content">
@@ -270,12 +270,12 @@
         </div>
         <button class="notification-close" onclick="this.parentElement.remove()">×</button>
       `;
-      
+
       document.body.appendChild(notification);
-      
+
       // Trigger animation
       setTimeout(() => notification.classList.add('show'), 10);
-      
+
       // Auto-remove after 5 seconds
       setTimeout(() => {
         notification.classList.remove('show');
@@ -286,10 +286,10 @@
     // Form submission handler
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      
+
       const submitBtn = document.getElementById('submitBtn');
       const formData = new FormData(this);
-      
+
       // Convert FormData to JSON
       const data = {
         name: formData.get('name'),
@@ -297,11 +297,11 @@
         subject: formData.get('subject'),
         message: formData.get('message')
       };
-      
+
       // Show loading state
       submitBtn.classList.add('loading');
       submitBtn.disabled = true;
-      
+
       try {
         const response = await fetch('/api/contact.js', {
           method: 'POST',
@@ -310,9 +310,9 @@
           },
           body: JSON.stringify(data)
         });
-        
+
         const result = await response.json();
-        
+
         if (response.ok && result.success) {
           // Show success notification
           showNotification(
@@ -320,7 +320,7 @@
             'Message Sent!',
             'Thank you for reaching out. We\'ll get back to you soon!'
           );
-          
+
           // Reset form
           this.reset();
         } else {
