@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Why $READS Is Built on Cardano — Not Ethereum or Solana | $READS Blog</title>
+  <meta name="title" content="Why $READS Is Built on Cardano — Not Ethereum or Solana | $READS Blog">
+  <meta name="description" content="Why did READS Technologies choose Cardano for the $READS token? Low fees, sustainability, and African roots. Here's the full story behind the blockchain decision.">
+  <meta name="keywords" content="Cardano Nigeria, READS token Cardano, why Cardano blockchain, Cardano vs Ethereum Nigeria, blockchain education Africa, ADA Cardano Africa, learn to earn Cardano">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="READS Technologies">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://readstechnet.vercel.app/blog/why-cardano.html">
+  <meta property="og:title" content="Why $READS Is Built on Cardano — Not Ethereum or Solana">
+  <meta property="og:description" content="Low fees, sustainability, and African roots. Here's why READS Technologies picked Cardano for the $READS token.">
+  <meta property="og:image" content="https://readstechnet.vercel.app/assets/reads-logo.png">
+  <meta property="og:site_name" content="READS Technologies">
+
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:site" content="@READS_TECH_NET">
+  <meta property="twitter:title" content="Why $READS Is Built on Cardano">
+  <meta property="twitter:description" content="Low fees, sustainability, African roots — the full story behind the $READS blockchain choice.">
+  <meta property="twitter:image" content="https://readstechnet.vercel.app/assets/reads-logo.png">
+
+  <link rel="canonical" href="https://readstechnet.vercel.app/blog/why-cardano.html">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Why We Built $READS on Cardano — Not Ethereum or Solana",
+    "description": "The story and reasoning behind READS Technologies choosing Cardano as the blockchain for the $READS Learn-to-Earn education token.",
+    "image": "https://readstechnet.vercel.app/assets/reads-logo.png",
+    "author": {"@type": "Organization", "name": "READS Technologies"},
+    "publisher": {"@type": "Organization", "name": "READS Technologies", "logo": {"@type": "ImageObject", "url": "https://readstechnet.vercel.app/assets/reads-logo.png"}},
+    "datePublished": "2026-04-04",
+    "dateModified": "2026-04-04",
+    "mainEntityOfPage": "https://readstechnet.vercel.app/blog/why-cardano.html",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://readstechnet.vercel.app/"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://readstechnet.vercel.app/blog.html"},
+        {"@type": "ListItem", "position": 3, "name": "Why Cardano", "item": "https://readstechnet.vercel.app/blog/why-cardano.html"}
+      ]
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="icon" href="../assets/reads-logo.png"/>
+  <script src="../js/script.js" defer></script>
+
+  <style>
+    .article-hero {
+      background: linear-gradient(135deg, #1a3a5c 0%, #0d2137 100%);
+      color: #fff;
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+    }
+    .article-hero .breadcrumb-nav {
+      font-size: 0.82rem;
+      opacity: 0.8;
+      margin-bottom: 1.2rem;
+    }
+    .article-hero .breadcrumb-nav a { color: #fff; text-decoration: none; opacity: 0.8; }
+    .article-hero .breadcrumb-nav a:hover { opacity: 1; }
+    .article-hero .breadcrumb-nav span { margin: 0 6px; }
+    .article-hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      max-width: 720px;
+      margin: 0 auto 1rem;
+      line-height: 1.3;
+      color: #fff;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      opacity: 0.85;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.8rem;
+    }
+    .article-tag {
+      display: inline-block;
+      background: var(--primary-color);
+      color: #000;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+    }
+    .article-body {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+    .article-body p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+      color: var(--text-color);
+    }
+    .article-body h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1rem;
+      color: var(--primary-color);
+      border-left: 4px solid var(--primary-color);
+      padding-left: 0.8rem;
+    }
+    .article-body h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 2rem 0 0.6rem;
+      color: var(--text-color);
+    }
+    .article-body ul, .article-body ol {
+      margin: 0.5rem 0 1.5rem 1.5rem;
+      line-height: 1.85;
+    }
+    .article-body li { margin-bottom: 0.5rem; font-size: 1.05rem; }
+    .callout {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--primary-color);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 2rem 0;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .callout strong { color: var(--primary-color); }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.95rem;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    .comparison-table th {
+      background: var(--primary-color);
+      color: #000;
+      padding: 0.8rem 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    .comparison-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-color);
+    }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table tr:nth-child(even) td { background: var(--card-bg); }
+    .check { color: #2D8B7B; font-weight: 700; }
+    .cross { color: #e74c3c; font-weight: 700; }
+    .article-cta {
+      background: linear-gradient(135deg, #1a3a5c 0%, #0d2137 100%);
+      border-radius: 12px;
+      padding: 2.5rem;
+      text-align: center;
+      margin: 3rem 0 1rem;
+      color: #fff;
+    }
+    .article-cta h3 { color: #fff; font-size: 1.3rem; margin-bottom: 0.6rem; }
+    .article-cta p { color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .article-cta .btn { background: var(--primary-color); color: #000; font-weight: 700; border: none; }
+    .article-cta .btn:hover { background: #b8941f; }
+    .back-to-blog {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: gap 0.2s;
+    }
+    .back-to-blog:hover { gap: 10px; }
+    .related-posts {
+      border-top: 1px solid var(--border-color);
+      padding-top: 2.5rem;
+      margin-top: 2.5rem;
+    }
+    .related-posts h3 { font-size: 1.1rem; margin-bottom: 1.2rem; }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .related-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.2rem;
+      text-decoration: none;
+      color: var(--text-color);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: block;
+    }
+    .related-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px var(--box-shadow); }
+    .related-card .rel-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .related-card h4 { font-size: 0.95rem; line-height: 1.4; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="menu-toggle" id="mobileMenu">
+        <span></span><span></span><span></span>
+      </div>
+      <img src="../assets/reads-logo.png" alt="$READS Logo" class="logo" />
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="themeToggle">
+          <input type="checkbox" id="themeToggle" />
+          <div class="slider round"></div>
+        </label>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../features.html">Features</a></li>
+        <li><a href="../team.html">Team</a></li>
+        <li><a href="../token.html">Token</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="article-hero">
+    <div class="breadcrumb-nav">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <a href="../blog.html">Blog</a>
+      <span>›</span>
+      Why We Built on Cardano
+    </div>
+    <span class="article-tag">Blockchain</span>
+    <h1>Why We Built $READS on Cardano — Not Ethereum or Solana</h1>
+    <div class="article-meta">
+      <span>📅 April 4, 2026</span>
+      <span>✍️ READS Technologies</span>
+      <span>⏱️ 7 min read</span>
+    </div>
+  </div>
+
+  <div class="article-body">
+    <a href="../blog.html" class="back-to-blog">← Back to Blog</a>
+
+    <p>
+      When people hear we're building a blockchain-based education platform, the first question is almost always: "So is it on Ethereum?" And our answer — Cardano — usually gets one of two reactions. Either "Oh nice, I love Cardano," or "Why not Ethereum though?"
+    </p>
+
+    <p>
+      Fair question. Ethereum is the biggest smart contract platform in the world. Solana is fast and popular with developers. So why did READS Technologies go with Cardano for the $READS token? Let us break it down honestly.
+    </p>
+
+    <h2>First — A Quick Reality Check About Our Users</h2>
+
+    <p>
+      Before we talk blockchain, let's talk about who we're actually building for: <strong>Nigerian students</strong>. Secondary school students, JAMB candidates, undergraduates. People who may be earning their first crypto ever. People in areas with inconsistent internet. People who can't afford to lose ₦5,000 to gas fees just to claim a reward.
+    </p>
+
+    <p>
+      That context matters a lot when you're choosing a blockchain. A great blockchain for a DeFi protocol in New York might be completely wrong for an education platform serving students in Owerri, Kano, or Enugu.
+    </p>
+
+    <div class="callout">
+      <strong>Our #1 requirement:</strong> The blockchain had to be affordable enough that earning small token rewards actually makes sense — not a system where the gas fee to claim your reward is more than the reward itself.
+    </div>
+
+    <h2>The Ethereum Problem: Gas Fees</h2>
+
+    <p>
+      Ethereum is incredible technology. But let's be honest about gas fees. At peak times, a simple token transfer on Ethereum can cost anywhere from $5 to $50+. For a platform where students earn small amounts of tokens for completing quizzes, this model simply doesn't work.
+    </p>
+
+    <p>
+      Imagine a student spending 2 hours studying and passing 5 quizzes to earn tokens worth $2 — only to pay $8 in gas just to move those tokens. That's not a reward system. That's a punishment.
+    </p>
+
+    <p>
+      Yes, Layer 2 solutions like Polygon, Optimism, or Arbitrum reduce Ethereum gas fees significantly. But that adds technical complexity for users who are already new to crypto.
+    </p>
+
+    <h2>Why Not Solana?</h2>
+
+    <p>
+      Solana is fast — genuinely very fast — and fees are negligible. We considered it. But Solana has had well-documented network outages and reliability issues over the years. For an education platform where student rewards need to be credited reliably and on schedule, downtime isn't something we can accept. Students trust us with their effort. We need to trust the infrastructure we build on.
+    </p>
+
+    <h2>So Why Cardano?</h2>
+
+    <p>Here's what actually made the decision for us:</p>
+
+    <h3>1. Extremely Low Transaction Fees</h3>
+    <p>
+      Cardano transaction fees are tiny — typically a fraction of a cent to a few cents per transaction. For a Learn-to-Earn model where thousands of small reward transactions happen daily, this is essential. Students get their full reward. No surprises.
+    </p>
+
+    <h3>2. Cardano Native Tokens — No Smart Contract Needed for Basic Transfers</h3>
+    <p>
+      This is actually a technical advantage that doesn't get talked about enough. On Cardano, you can issue and transfer tokens as <strong>native assets</strong> — meaning they're treated the same way as ADA (Cardano's native currency) at the protocol level. You don't need a smart contract for every token transfer, which reduces complexity, cost, and attack surface. $READS tokens are issued this way.
+    </p>
+
+    <h3>3. Africa Is Already a Cardano Hub</h3>
+    <p>
+      Cardano's founder Charles Hoskinson has been vocal about Cardano's mission in Africa for years. Projects like the Ethiopian national education credentialing system — where Cardano was used to issue student IDs and academic records for millions of Ethiopian students — show that this blockchain actually thinks about African use cases. That alignment matters to us.
+    </p>
+
+    <h3>4. Peer-Reviewed, Research-Driven Development</h3>
+    <p>
+      We're building an education platform. It felt right to build on a blockchain that itself takes a rigorous, academic approach to its development. Every Cardano improvement goes through peer-reviewed research before implementation. There's something fitting about that for a project focused on academic achievement.
+    </p>
+
+    <h3>5. Proof-of-Stake = Environmentally Sustainable</h3>
+    <p>
+      Cardano uses Proof-of-Stake (PoS), which uses a tiny fraction of the energy that Bitcoin's Proof-of-Work uses. As a platform promoting education and a better future, we didn't want to power it with something that burns the planet. Cardano's energy footprint is among the lowest of any major blockchain.
+    </p>
+
+    <h2>The Comparison</h2>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>Ethereum</th>
+          <th>Solana</th>
+          <th>Cardano ($READS)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Transaction Fees</td>
+          <td><span class="cross">High ($5–$50+)</span></td>
+          <td><span class="check">Very Low</span></td>
+          <td><span class="check">Very Low</span></td>
+        </tr>
+        <tr>
+          <td>Network Reliability</td>
+          <td><span class="check">High</span></td>
+          <td><span class="cross">Outages recorded</span></td>
+          <td><span class="check">High</span></td>
+        </tr>
+        <tr>
+          <td>Native Token Support</td>
+          <td><span class="cross">Needs smart contract</span></td>
+          <td><span class="cross">Needs smart contract</span></td>
+          <td><span class="check">Built-in protocol level</span></td>
+        </tr>
+        <tr>
+          <td>Africa Focus</td>
+          <td><span class="cross">Minimal</span></td>
+          <td><span class="cross">Minimal</span></td>
+          <td><span class="check">Active (Ethiopia, etc.)</span></td>
+        </tr>
+        <tr>
+          <td>Sustainability (PoS)</td>
+          <td><span class="check">Yes (post-Merge)</span></td>
+          <td><span class="check">Yes</span></td>
+          <td><span class="check">Yes (since launch)</span></td>
+        </tr>
+        <tr>
+          <td>Research-driven</td>
+          <td>Partially</td>
+          <td>Partially</td>
+          <td><span class="check">Fully peer-reviewed</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>The 100 Billion Token Supply — Why So Many?</h2>
+
+    <p>
+      We get this question a lot. $READS has a total supply of <strong>100 billion tokens</strong>. That sounds like a huge number, but there's a clear reason for it.
+    </p>
+
+    <p>
+      The platform is designed to reward millions of students across Nigeria and eventually all of Africa. Each student earns small amounts of tokens for individual quizzes and lessons — every single day. Over years of operation, with potentially millions of users, you need a large supply to ensure rewards never run out and token prices remain accessible to everyday earners.
+    </p>
+
+    <p>
+      60% of the supply — 60 billion tokens — is reserved exclusively for Learn-to-Earn rewards. That's not for the team. Not for investors. It's for students.
+    </p>
+
+    <div class="callout">
+      <strong>The bottom line:</strong> We chose Cardano because it's the blockchain that best fits the reality of our users — African students who need affordable, reliable, and genuinely rewarding transactions. The technology matches the mission.
+    </div>
+
+    <h2>What's Next for $READS on Cardano</h2>
+
+    <p>
+      As the platform develops, we plan to explore deeper Cardano integrations — including on-chain certificates (so your $READS-issued academic credentials are permanently verifiable on the blockchain), decentralized governance (so token holders can vote on platform direction), and DeFi integrations that let students stake their earned tokens for additional passive income.
+    </p>
+
+    <p>
+      All of this is built on the foundation of: affordable fees, reliable network, and a blockchain that actually cares about Africa.
+    </p>
+
+    <div class="article-cta">
+      <h3>Be Part of the $READS Ecosystem</h3>
+      <p>Join the waitlist and earn $READS tokens on Cardano when we launch. Early members get priority access and bonus rewards.</p>
+      <a href="https://forms.gle/5QMw2KX6YrTWSMi76" target="_blank" class="btn">Join the Waitlist →</a>
+    </div>
+
+    <div class="related-posts">
+      <h3>Read Next</h3>
+      <div class="related-grid">
+        <a href="earn-crypto-jamb-2026.html" class="related-card">
+          <span class="rel-tag">Exam Tips</span>
+          <h4>How Nigerian Students Can Earn Crypto While Preparing for JAMB 2026</h4>
+        </a>
+        <a href="cbt-vs-classroom.html" class="related-card">
+          <span class="rel-tag">Education</span>
+          <h4>CBT Practice vs. Classroom Study: What Actually Improves WAEC Scores?</h4>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <img src="../assets/reads-logo.png" alt="$READS Logo" class="footer-logo">
+        <p class="footer-brand-slogan">Empowering You To Study Smart</p>
+        <div class="footer-social-links">
+          <a href="https://x.com/READS_TECH_NET?s=09" target="_blank"><img src="../assets/twitter-icon.png" alt="X"></a>
+          <a href="https://t.me/readstoken" target="_blank"><img src="../assets/telegram-icon.png" alt="Telegram"></a>
+          <a href="https://www.linkedin.com/in/reads-technologies-39a947377" target="_blank"><img src="../assets/linkedin-icon.png" alt="LinkedIn"></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../features.html">Features</a></li>
+          <li><a href="../blog.html">Blog</a></li>
+          <li><a href="../token.html">Token</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../terms-of-service.html">Terms of Service</a></li>
+          <li><a href="../disclaimer.html">Disclaimer</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 $READS. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 800, once: true });</script>
+</body>
+</html>
