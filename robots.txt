@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
-# Sitemap Location
 Sitemap: https://readstechnet.vercel.app/sitemap.xml

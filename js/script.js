@@ -1,24 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('themeToggle');
-    const htmlElement = document.documentElement; // This refers to the <html> tag
+    const htmlElement = document.documentElement;
 
-    // Function to set theme based on user preference or stored value
+    // Auto-set active nav link based on current page
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+        const linkPage = link.getAttribute('href').split('/').pop();
+        if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+
+    // Theme toggle
     function setInitialTheme() {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             htmlElement.setAttribute('data-theme', savedTheme);
-            themeToggle.checked = (savedTheme === 'dark'); // Set checkbox state
+            if (themeToggle) themeToggle.checked = (savedTheme === 'dark');
         } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            // Check if user prefers dark mode system-wide
             htmlElement.setAttribute('data-theme', 'dark');
-            themeToggle.checked = true;
+            if (themeToggle) themeToggle.checked = true;
         } else {
             htmlElement.setAttribute('data-theme', 'light');
-            themeToggle.checked = false;
+            if (themeToggle) themeToggle.checked = false;
         }
     }
 
-    // Toggle theme on click
     if (themeToggle) {
         themeToggle.addEventListener('change', () => {
             if (themeToggle.checked) {
@@ -31,9 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize theme when page loads
     setInitialTheme();
-
 
     // Mobile Menu Toggle
     const mobileMenuButton = document.getElementById('mobileMenu');
@@ -42,10 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileMenuButton && navLinks) {
         mobileMenuButton.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            mobileMenuButton.classList.toggle('active'); // Animate hamburger
+            mobileMenuButton.classList.toggle('active');
         });
 
-        // Close menu if a link is clicked (optional, but good for UX)
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
