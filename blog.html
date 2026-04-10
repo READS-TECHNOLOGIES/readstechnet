@@ -2,99 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog | $READS — Learn-to-Earn Crypto Education Insights</title>
-  <meta name="title" content="Blog | $READS — Learn-to-Earn Crypto Education Insights">
-  <meta name="description" content="The $READS blog — tips on passing JAMB and WAEC, how to earn crypto while studying in Nigeria, blockchain education news, and platform updates.">
-  <meta name="keywords" content="READS blog, learn to earn Nigeria, JAMB tips, WAEC preparation, blockchain education, Cardano token, crypto study rewards, edtech Nigeria">
-  <meta name="robots" content="index, follow">
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://readstechnet.vercel.app/blog.html">
-  <meta property="og:title" content="Blog | $READS — Learn-to-Earn Crypto Education Insights">
-  <meta property="og:description" content="Tips on JAMB, WAEC, earning crypto while studying, and blockchain education news from READS Technologies.">
-  <meta property="og:image" content="https://readstechnet.vercel.app/assets/reads-logo.png">
-  <meta property="og:site_name" content="READS Technologies">
-
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:site" content="@READS_TECH_NET">
-  <meta property="twitter:title" content="Blog | $READS">
-  <meta property="twitter:description" content="Tips on JAMB, WAEC, earning crypto while studying, and blockchain education news.">
-  <meta property="twitter:image" content="https://readstechnet.vercel.app/assets/reads-logo.png">
-
-  <link rel="canonical" href="https://readstechnet.vercel.app/blog.html">
+  <meta name="description" content="Insights on blockchain education, tips for JAMB and WAEC preparation, how to earn crypto while studying, and the latest from READS Technologies." />
+  <link rel="icon" href="assets/reads-logo.png" />
   <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="icon" href="assets/reads-logo.png"/>
-  <script src="js/script.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .blog-card {
-      background: var(--card-bg, #fff);
-      border: 1px solid var(--border-color, #e5e5e5);
-      border-radius: 12px;
-      padding: 1.8rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .blog-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
-    .blog-tag {
-      display: inline-block;
-      background: var(--accent-color, #c9a84c);
-      color: #000;
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-bottom: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .blog-card h2 {
-      font-size: 1.1rem;
-      margin-bottom: 0.6rem;
-      line-height: 1.4;
-    }
-    .blog-card p {
-      font-size: 0.9rem;
-      opacity: 0.75;
-      line-height: 1.6;
-      margin-bottom: 1.2rem;
-    }
-    .blog-meta {
-      font-size: 0.78rem;
-      opacity: 0.5;
-    }
-    .coming-soon-note {
-      text-align: center;
-      padding: 1rem;
-      opacity: 0.6;
-      font-style: italic;
-      margin-top: 1rem;
-    }
+    .blog-hero { text-align: center; padding: 3rem 20px 2rem; }
+    .blog-hero p { font-size: 1.1rem; color: var(--secondary-color); max-width: 640px; margin: 0 auto; }
+    .blog-list { max-width: 860px; margin: 2rem auto 5rem; padding: 0 20px; }
+    .blog-card { border-bottom: 1px solid var(--border-color); padding: 2.5rem 0; }
+    .blog-card:last-child { border-bottom: none; }
+    .blog-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 3px 10px; border-radius: 4px; margin-bottom: 0.75rem; }
+    .tag-exam         { background: #e8f0fe; color: #1a56db; }
+    .tag-blockchain   { background: #d1fae5; color: #065f46; }
+    .tag-education    { background: #fff3e0; color: #c2410c; }
+    .tag-technology   { background: #fff3e0; color: #c2410c; }
+    .tag-partnerships { background: #ede9fe; color: #5b21b6; }
+    .tag-token        { background: #fef9c3; color: #854d0e; }
+    .blog-card h2 { font-size: clamp(1.15rem, 3vw, 1.6rem); color: var(--text-color); margin-bottom: 0.6rem; line-height: 1.3; }
+    .blog-card h2 a { color: inherit; text-decoration: none; transition: color 0.2s; }
+    .blog-card h2 a:hover { color: var(--primary-color); }
+    .blog-card-meta { font-size: 0.8rem; color: var(--secondary-color); margin-bottom: 0.75rem; display: flex; gap: 18px; flex-wrap: wrap; }
+    .blog-card p { font-size: 1rem; color: var(--secondary-color); margin-bottom: 1rem; max-width: 700px; line-height: 1.7; }
+    .read-link { font-size: 0.9rem; font-weight: 600; color: var(--highlight-color); text-decoration: none; transition: color 0.2s; }
+    .read-link:hover { color: var(--primary-color); }
   </style>
 </head>
 <body>
+
   <header>
     <nav class="navbar">
       <div class="menu-toggle" id="mobileMenu">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
+
       <img src="assets/reads-logo.png" alt="$READS Logo" class="logo" />
+
       <div class="theme-switch-wrapper">
         <label class="theme-switch" for="themeToggle">
           <input type="checkbox" id="themeToggle" />
           <div class="slider round"></div>
         </label>
       </div>
+
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -106,86 +60,117 @@
     </nav>
   </header>
 
-  <main class="content-page">
-    <h1 data-aos="fade-up">The <span class="highlight">$READS</span> Blog</h1>
-    <p data-aos="fade-up" data-aos-delay="100" style="max-width:640px;margin:0 auto 2rem;">
-      Insights on blockchain education, tips for JAMB and WAEC preparation, how to earn crypto while studying, and the latest from READS Technologies.
-    </p>
+<main class="content-page">
+  <div class="blog-hero">
+    <h1>The $READS Blog</h1>
+    <p>Insights on blockchain education, JAMB &amp; WAEC prep tips, earning crypto while studying, and the latest from READS Technologies.</p>
+  </div>
 
-    <div class="blog-grid">
+  <div class="blog-list">
 
-      <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
-        <span class="blog-tag">Exam Tips</span>
-        <h2><a href="blog/earn-crypto-jamb-2026.html" style="color:inherit;text-decoration:none;">How Nigerian Students Can Earn Crypto While Studying for JAMB 2026</a></h2>
-        <p>Discover how the $READS Learn-to-Earn model turns your JAMB study sessions into real crypto rewards — and how to maximize your earnings before the exam date.</p>
-        <div class="blog-meta">April 4, 2026 &mdash; 6 min read</div>
-        <a href="blog/earn-crypto-jamb-2026.html" class="btn primary-btn" style="margin-top:1rem;display:inline-block;font-size:0.85rem;padding:0.5rem 1.2rem;">Read Article →</a>
-      </article>
-
-      <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
-        <span class="blog-tag">Blockchain</span>
-        <h2><a href="blog/why-cardano.html" style="color:inherit;text-decoration:none;">Why We Built $READS on Cardano — Not Ethereum or Solana</a></h2>
-        <p>A deep dive into why READS Technologies chose Cardano as the blockchain for the $READS token — and what it means for students earning rewards on the platform.</p>
-        <div class="blog-meta">April 4, 2026 &mdash; 7 min read</div>
-        <a href="blog/why-cardano.html" class="btn primary-btn" style="margin-top:1rem;display:inline-block;font-size:0.85rem;padding:0.5rem 1.2rem;">Read Article →</a>
-      </article>
-
-      <article class="blog-card" data-aos="fade-up" data-aos-delay="300">
-        <span class="blog-tag">Education</span>
-        <h2><a href="blog/cbt-vs-classroom.html" style="color:inherit;text-decoration:none;">CBT Practice vs. Classroom Study: What Actually Improves WAEC Scores?</a></h2>
-        <p>Research shows that CBT-format practice dramatically improves exam scores. Here's how the $READS CBT engine simulates real WAEC conditions to help you pass.</p>
-        <div class="blog-meta">April 4, 2026 &mdash; 8 min read</div>
-        <a href="blog/cbt-vs-classroom.html" class="btn primary-btn" style="margin-top:1rem;display:inline-block;font-size:0.85rem;padding:0.5rem 1.2rem;">Read Article →</a>
-      </article>
-
+    <div class="blog-card">
+      <span class="blog-tag tag-technology">Technology</span>
+      <h2><a href="blog/ai-changing-nigerian-exam-prep.html">How AI is Changing How Nigerian Students Study for WAEC and JAMB</a></h2>
+      <div class="blog-card-meta"><span>April 9, 2026</span><span>7 min read</span></div>
+      <p>AI tutors, adaptive analytics, and smart lesson generation are reshaping exam prep in Nigeria. Here's how $READS uses artificial intelligence to help students study smarter — not just harder.</p>
+      <a class="read-link" href="blog/ai-changing-nigerian-exam-prep.html">Read Article →</a>
     </div>
-  </main>
 
-  <footer>
-    <div class="footer-container">
-      <div class="footer-section">
-        <img src="assets/reads-logo.png" alt="$READS Logo" class="footer-logo">
-        <p class="footer-brand-slogan">Empowering You To Study Smart</p>
-        <div class="footer-social-links">
-          <a href="https://x.com/READS_TECH_NET?s=09" target="_blank"><img src="assets/twitter-icon.png" alt="X"></a>
-          <a href="https://t.me/readstoken" target="_blank"><img src="assets/telegram-icon.png" alt="Telegram"></a>
-          <a href="https://www.linkedin.com/in/reads-technologies-39a947377" target="_blank"><img src="assets/linkedin-icon.png" alt="LinkedIn"></a>
-        </div>
-      </div>
-      <div class="footer-section">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="features.html">Features</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="token.html">Token</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="partner.html">Partnerships</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="terms-of-service.html">Terms of Service</a></li>
-          <li><a href="disclaimer.html">Disclaimer</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Support</h4>
-        <ul>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-        </ul>
+    <div class="blog-card">
+      <span class="blog-tag tag-token">Token</span>
+      <h2><a href="blog/tokens-vs-airtime.html">$READS Tokens vs. Airtime Rewards: Why Crypto is the Better Student Incentive</a></h2>
+      <div class="blog-card-meta"><span>April 9, 2026</span><span>6 min read</span></div>
+      <p>Airtime rewards expire. Crypto doesn't. A full comparison of traditional student reward programmes and $READS tokens — and why blockchain-based incentives are fundamentally different.</p>
+      <a class="read-link" href="blog/tokens-vs-airtime.html">Read Article →</a>
+    </div>
+
+    <div class="blog-card">
+      <span class="blog-tag tag-partnerships">Partnerships</span>
+      <h2><a href="blog/university-partnerships.html">How Nigerian Universities Can Partner with $READS — And Why They Should</a></h2>
+      <div class="blog-card-meta"><span>April 9, 2026</span><span>7 min read</span></div>
+      <p>A guide for Nigerian secondary schools, polytechnics, and universities on the $READS Partner Programme — institutional dashboards, verified result uploads, NFT certificates, and more.</p>
+      <a class="read-link" href="blog/university-partnerships.html">Read Article →</a>
+    </div>
+
+    <div class="blog-card">
+      <span class="blog-tag tag-blockchain">Blockchain</span>
+      <h2><a href="blog/what-is-cardano.html">What is the Cardano Blockchain? A Simple Guide for Nigerian Students</a></h2>
+      <div class="blog-card-meta"><span>April 9, 2026</span><span>6 min read</span></div>
+      <p>Never heard of Cardano? This beginner-friendly explainer covers what it is, how it differs from Bitcoin and Ethereum, and why $READS chose it to power student rewards in Nigeria.</p>
+      <a class="read-link" href="blog/what-is-cardano.html">Read Article →</a>
+    </div>
+
+    <div class="blog-card">
+      <span class="blog-tag tag-exam">Exam Tips</span>
+      <h2><a href="blog/earn-crypto-jamb-2026.html">How Nigerian Students Can Earn Crypto While Studying for JAMB 2026</a></h2>
+      <div class="blog-card-meta"><span>April 4, 2026</span><span>6 min read</span></div>
+      <p>Discover how the $READS Learn-to-Earn model turns your JAMB study sessions into real crypto rewards — and how to maximize your earnings before the exam date.</p>
+      <a class="read-link" href="blog/earn-crypto-jamb-2026.html">Read Article →</a>
+    </div>
+
+    <div class="blog-card">
+      <span class="blog-tag tag-blockchain">Blockchain</span>
+      <h2><a href="blog/why-cardano.html">Why We Built $READS on Cardano — Not Ethereum or Solana</a></h2>
+      <div class="blog-card-meta"><span>April 4, 2026</span><span>7 min read</span></div>
+      <p>A deep dive into why READS Technologies chose Cardano as the blockchain for the $READS token — and what it means for students earning rewards on the platform.</p>
+      <a class="read-link" href="blog/why-cardano.html">Read Article →</a>
+    </div>
+
+    <div class="blog-card">
+      <span class="blog-tag tag-education">Education</span>
+      <h2><a href="blog/cbt-vs-classroom.html">CBT Practice vs. Classroom Study: What Actually Improves WAEC Scores?</a></h2>
+      <div class="blog-card-meta"><span>April 4, 2026</span><span>8 min read</span></div>
+      <p>Research shows that CBT-format practice dramatically improves exam scores. Here's how the $READS CBT engine simulates real WAEC conditions to help you pass.</p>
+      <a class="read-link" href="blog/cbt-vs-classroom.html">Read Article →</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-section">
+      <img src="assets/reads-logo.png" alt="$READS Logo" class="footer-logo" />
+      <p class="footer-brand-slogan">Empowering You To Study Smart</p>
+      <div class="footer-social-links">
+        <a href="https://x.com/READS_TECH_NET?s=09"><img src="assets/twitter-icon.png" alt="X" /></a>
+        <a href="https://t.me/readstoken"><img src="assets/telegram-icon.png" alt="Telegram" /></a>
+        <a href="https://www.linkedin.com/in/reads-technologies-39a947377"><img src="assets/linkedin-icon.png" alt="LinkedIn" /></a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 $READS. All rights reserved.</p>
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="token.html">Token</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="partner.html">Partnerships</a></li>
+      </ul>
     </div>
-  </footer>
+    <div class="footer-section">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-of-service.html">Terms of Service</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 $READS. All rights reserved.</p>
+  </div>
+</footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({ duration: 800, once: true });</script>
+<script src="js/script.js"></script>
 </body>
 </html>
