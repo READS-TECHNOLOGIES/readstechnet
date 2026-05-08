@@ -120,39 +120,7 @@
               <option value="school">School / Institution</option>
               <option value="other">Other</option>
             </select>
-            <button class="wl-btn" onclick="sasync function submitWaitlist() {
-  const name  = document.getElementById('wlName').value.trim();
-  const email = document.getElementById('wlEmail').value.trim();
-  const phone = document.getElementById('wlPhone').value.trim();
-  const type  = document.getElementById('wlType').value;
-
-  if (!name || !email) { alert('Please enter your name and email.'); return; }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email.'); return; }
-
-  const btn = document.querySelector('.wl-btn');
-  btn.textContent = 'Submitting…';
-  btn.disabled = true;
-
-  try {
-    const res = await fetch('/api/presale', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, phone, type }),
-    });
-    if (res.ok) {
-      btn.textContent = "✅ You're on the list!";
-      btn.style.background = '#1a7a4a';
-      document.getElementById('wlSuccess').style.display = 'block';
-    } else {
-      btn.textContent = '🚀 Reserve My Spot — It\'s Free';
-      btn.disabled = false;
-      alert('Something went wrong. Please try again.');
-    }
-  } catch {
-    btn.textContent = '🚀 Reserve My Spot — It\'s Free';
-    btn.disabled = false;
-    alert('Network error. Please try again.');
-  }">🚀 Reserve My Spot — It's Free</button>
+            <button class="wl-btn" onclick="submitWaitlist()">🚀 Reserve My Spot — It's Free</button>
           </div>
           <p class="wl-note">No wallet needed yet. Just your spot in line.</p>
           <div class="wl-success" id="wlSuccess">✅ You're on the list! We'll notify you the moment presale opens.</div>
@@ -263,7 +231,7 @@
     function tick(){const d=presaleDate-new Date();if(d<=0)return;const p=n=>String(Math.floor(n)).padStart(2,'0');document.getElementById('cdDays').textContent=p(d/86400000);document.getElementById('cdHours').textContent=p((d%86400000)/3600000);document.getElementById('cdMins').textContent=p((d%3600000)/60000);document.getElementById('cdSecs').textContent=p((d%60000)/1000)}
     tick();setInterval(tick,1000);
     new IntersectionObserver(es=>{if(es[0].isIntersecting)document.getElementById('progFill').style.width='23%'}).observe(document.getElementById('progFill'));
-    function submitWaitlist(){const n=document.getElementById('wlName').value.trim(),e=document.getElementById('wlEmail').value.trim();if(!n||!e){alert('Please enter your name and email.');return}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){alert('Please enter a valid email.');return}const b=document.querySelector('.wl-btn');b.textContent='✅ You\'re on the list!';b.style.background='#1a7a4a';b.disabled=true;document.getElementById('wlSuccess').style.display='block'}
+    async function submitWaitlist(){const name=document.getElementById('wlName').value.trim(),email=document.getElementById('wlEmail').value.trim(),phone=document.getElementById('wlPhone').value.trim(),type=document.getElementById('wlType').value;if(!name||!email){alert('Please enter your name and email.');return}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){alert('Please enter a valid email.');return}const b=document.querySelector('.wl-btn');b.textContent='Submitting…';b.disabled=true;try{const r=await fetch('/api/presale',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,phone,type})});if(r.ok){b.textContent='✅ You\'re on the list!';b.style.background='#1a7a4a';document.getElementById('wlSuccess').style.display='block'}else{b.textContent='🚀 Reserve My Spot — It\'s Free';b.disabled=false;alert('Something went wrong. Please try again.')}}catch{b.textContent='🚀 Reserve My Spot — It\'s Free';b.disabled=false;alert('Network error. Please try again.')}}
     function toggleFAQ(el){el.parentElement.classList.toggle('open')}
   </script>
   <reads-footer></reads-footer>
