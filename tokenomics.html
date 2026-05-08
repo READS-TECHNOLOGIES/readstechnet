@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>$READS Tokenomics — Distribution, Burn & Utility | READS Technologies</title>
+  <meta name="description" content="Explore $READS tokenomics: 100M fixed supply, 20% burn mechanism, fiat price stability layer, partner model, vesting schedules, and Cardano-native utility."/>
+  <link rel="canonical" href="https://readstechnet.vercel.app/tokenomics.html"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --green:#1a7a4a; --green-d:#145e38; --green-l:#e8f5ee; --green-ll:#f2faf6;
+      --gold:#c9a84c; --gold-l:#fdf6e3;
+      --navy:#0d1b2a; --cream:#faf8f3; --white:#ffffff;
+      --gray:#6b7280; --gray-l:#9ca3af; --border:#e5e7eb;
+      --burn:#ff6b35; --burn-l:#fff1eb;
+      --radius:12px; --radius-lg:20px;
+      --shadow:0 4px 24px rgba(0,0,0,.06); --shadow-lg:0 12px 48px rgba(0,0,0,.1);
+    }
+    html { scroll-behavior:smooth; }
+    body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--navy); line-height:1.6; -webkit-font-smoothing:antialiased; }
+    a { text-decoration:none; color:inherit; }
+
+    /* NAV */
+    .nav { position:sticky; top:0; z-index:200; background:rgba(255,255,255,.97); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 clamp(1rem,4vw,2.5rem); }
+    .nav-logo img { height:38px; }
+    .nav-links { display:flex; align-items:center; gap:clamp(.8rem,2vw,1.8rem); list-style:none; }
+    .nav-links a { font-size:.88rem; font-weight:500; color:var(--navy); transition:color .2s; white-space:nowrap; }
+    .nav-links a:hover,.nav-links a.active { color:var(--green); }
+    .nav-pill { background:var(--green)!important; color:var(--white)!important; padding:.45rem 1.1rem; border-radius:6px; font-weight:600!important; }
+    .nav-pill:hover { background:var(--green-d)!important; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
+    .hamburger span { width:24px; height:2px; background:var(--navy); border-radius:2px; display:block; transition:all .3s; }
+    .mob-nav { display:none; position:fixed; inset:64px 0 0 0; background:var(--white); z-index:199; flex-direction:column; padding:1.5rem; gap:.2rem; overflow-y:auto; box-shadow:0 8px 32px rgba(0,0,0,.1); }
+    .mob-nav.open { display:flex; }
+    .mob-nav a { padding:.9rem .5rem; font-size:1rem; font-weight:500; border-bottom:1px solid var(--border); color:var(--navy); display:block; }
+    .mob-nav a:last-child { border:none; margin-top:.8rem; background:var(--green); color:var(--white)!important; text-align:center; border-radius:8px; padding:1rem; }
+    @media(max-width:900px) { .nav-links { display:none; } .hamburger { display:flex; } }
+
+    /* HERO */
+    .hero { background:linear-gradient(160deg,var(--navy) 0%,#0f2820 100%); padding:clamp(3.5rem,8vw,6rem) clamp(1rem,5vw,2.5rem) clamp(3rem,7vw,5rem); text-align:center; position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 50% at 20% 40%,rgba(201,168,76,.12) 0%,transparent 70%),radial-gradient(ellipse 50% 60% at 80% 20%,rgba(26,122,74,.18) 0%,transparent 60%); pointer-events:none; }
+    .hero-inner { position:relative; max-width:720px; margin:0 auto; }
+    .chip { display:inline-flex; align-items:center; gap:.5rem; padding:.35rem 1rem; border-radius:20px; font-size:.75rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:1.5rem; }
+    .chip-gold { background:rgba(201,168,76,.12); border:1px solid rgba(201,168,76,.35); color:var(--gold); }
+    .chip-burn { background:rgba(255,107,53,.15); border:1px solid rgba(255,107,53,.35); color:#ff9a7a; }
+    .chip-green { background:var(--green-l); border:1px solid rgba(26,122,74,.3); color:var(--green); }
+    .hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2.2rem,6vw,3.8rem); font-weight:900; line-height:1.1; color:var(--white); margin-bottom:1rem; }
+    .hero h1 em { color:var(--gold); font-style:italic; }
+    .hero-sub { font-size:clamp(.9rem,2.2vw,1.05rem); color:rgba(255,255,255,.6); max-width:540px; margin:0 auto 2rem; line-height:1.8; }
+    .hero-btns { display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.8rem 1.8rem; border-radius:8px; font-weight:600; font-size:.9rem; transition:all .2s; border:none; cursor:pointer; }
+    .btn-gold { background:var(--gold); color:var(--navy); }
+    .btn-gold:hover { background:#b8962e; transform:translateY(-2px); }
+    .btn-ghost { background:transparent; color:var(--white); border:1.5px solid rgba(255,255,255,.25); }
+    .btn-ghost:hover { background:rgba(255,255,255,.08); transform:translateY(-2px); }
+    .btn-green { background:var(--green); color:var(--white); }
+    .btn-green:hover { background:var(--green-d); transform:translateY(-2px); }
+
+    /* SUPPLY */
+    .supply { background:var(--gold-l); border-top:1px solid rgba(201,168,76,.25); border-bottom:1px solid rgba(201,168,76,.25); padding:clamp(1.5rem,4vw,2.5rem) clamp(1rem,4vw,2rem); text-align:center; }
+    .supply-num { font-family:'Playfair Display',serif; font-size:clamp(2.5rem,8vw,5rem); font-weight:900; color:var(--green); line-height:1; }
+    .supply-lbl { font-size:clamp(.9rem,2vw,1rem); color:var(--navy); font-weight:600; margin-top:.4rem; }
+    .supply-sub2 { font-size:.82rem; color:var(--gray); margin-top:.3rem; }
+    .supply-pills { display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem; margin-top:1.2rem; }
+    .supply-pill { background:var(--white); border:1px solid rgba(201,168,76,.3); border-radius:20px; padding:.28rem .9rem; font-size:.75rem; font-weight:600; color:var(--navy); }
+
+    /* SECTION WRAPPER */
+    .sec { padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,2.5rem); }
+    .sec-inner { max-width:1100px; margin:0 auto; }
+    .sec-lbl { font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; }
+    .sec-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.6rem); color:var(--navy); margin-bottom:.6rem; line-height:1.2; }
+    .sec-sub { font-size:clamp(.88rem,2vw,.98rem); color:var(--gray); max-width:580px; line-height:1.8; margin-bottom:clamp(2rem,5vw,3rem); }
+    .sec-title-white { color:var(--white); }
+    .sec-sub-dim { color:rgba(255,255,255,.45); }
+
+    /* DISTRIBUTION */
+    .dist-wrap { display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,5vw,4rem); align-items:center; }
+    @media(max-width:680px) { .dist-wrap { grid-template-columns:1fr; } }
+    .pie-wrap { position:relative; width:min(280px,80vw); height:min(280px,80vw); margin:0 auto; }
+    .pie-svg { width:100%; height:100%; transform:rotate(-90deg); }
+    .pie-ctr { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; }
+    .pie-ctr-num { font-family:'Playfair Display',serif; font-size:clamp(1.3rem,4vw,1.9rem); font-weight:700; color:var(--navy); }
+    .pie-ctr-lbl { font-size:.72rem; color:var(--gray); margin-top:.2rem; }
+    .legend { display:flex; flex-direction:column; gap:1rem; }
+    .lg-item { display:flex; align-items:flex-start; gap:.8rem; }
+    .lg-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; margin-top:.35rem; }
+    .lg-name { font-weight:600; font-size:.88rem; color:var(--navy); }
+    .lg-pct { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; margin-left:.3rem; }
+    .lg-desc { font-size:.78rem; color:var(--gray); line-height:1.55; margin-top:.15rem; }
+
+    /* UTILITY */
+    .utility-bg { background:var(--white); }
+    .u-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr)); gap:1.1rem; }
+    .u-card { border:1.5px solid var(--border); border-radius:var(--radius-lg); padding:1.5rem; background:var(--white); transition:border-color .2s,transform .2s,box-shadow .2s; }
+    .u-card:hover { border-color:var(--green); transform:translateY(-3px); box-shadow:var(--shadow-lg); }
+    .u-icon { width:44px; height:44px; background:var(--green-l); border-radius:11px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; margin-bottom:.9rem; }
+    .u-title { font-weight:700; font-size:.88rem; color:var(--navy); margin-bottom:.35rem; }
+    .u-desc { font-size:.78rem; color:var(--gray); line-height:1.65; }
+
+    /* PARTNER */
+    .partner-bg { background:var(--gold-l); border-top:1px solid rgba(201,168,76,.2); border-bottom:1px solid rgba(201,168,76,.2); }
+    .p-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr)); gap:1.1rem; margin-bottom:1.6rem; }
+    .p-card { background:var(--white); border-radius:var(--radius-lg); padding:1.5rem; border:1.5px solid rgba(201,168,76,.2); }
+    .p-icon { font-size:1.7rem; margin-bottom:.7rem; }
+    .p-title { font-weight:700; font-size:.88rem; color:var(--navy); margin-bottom:.4rem; }
+    .p-desc { font-size:.78rem; color:var(--gray); line-height:1.65; }
+    .p-note { background:var(--navy); border-radius:var(--radius-lg); padding:clamp(1.2rem,3vw,1.8rem); color:rgba(255,255,255,.7); font-size:.88rem; line-height:1.8; }
+    .p-note strong { color:var(--gold); display:block; margin-bottom:.35rem; font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; }
+
+    /* BURN */
+    .burn-bg { background:linear-gradient(160deg,#140800 0%,#220e00 50%,#140900 100%); border-top:4px solid var(--burn); padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,2.5rem); }
+    .burn-inner { max-width:1100px; margin:0 auto; }
+
+    .burn-split { display:grid; grid-template-columns:1fr 1fr; gap:clamp(.8rem,2vw,1.5rem); margin-bottom:clamp(1.5rem,4vw,2rem); }
+    @media(max-width:500px) { .burn-split { grid-template-columns:1fr; } }
+    .burn-box { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius-lg); padding:clamp(1.2rem,3vw,2rem); text-align:center; }
+    .burn-box-num { font-family:'Playfair Display',serif; font-size:clamp(2.8rem,7vw,4.5rem); font-weight:900; line-height:1; }
+    .burn-box-sub { font-size:.75rem; color:rgba(255,255,255,.45); margin-top:.3rem; }
+    .burn-box-lbl { margin-top:.7rem; font-size:.88rem; }
+
+    .burn-rows { display:grid; grid-template-columns:1fr 1fr; gap:clamp(.8rem,2vw,1.2rem); margin-bottom:clamp(1.5rem,4vw,2rem); }
+    @media(max-width:500px) { .burn-rows { grid-template-columns:1fr; } }
+    .burn-row-card { border-radius:var(--radius); padding:1.2rem; }
+    .burn-row-title { font-weight:700; font-size:.75rem; margin-bottom:.7rem; }
+    .burn-row-card ul { list-style:none; display:flex; flex-direction:column; gap:.45rem; }
+    .burn-row-card li { font-size:.78rem; color:rgba(255,255,255,.55); display:flex; align-items:flex-start; gap:.4rem; line-height:1.5; }
+    .burn-row-card li::before { content:'→'; flex-shrink:0; opacity:.7; }
+
+    /* STABILITY */
+    .stab-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius-lg); padding:clamp(1.3rem,4vw,2.2rem); margin-bottom:1.2rem; }
+    .stab-title { font-family:'Playfair Display',serif; font-size:clamp(1.1rem,3vw,1.4rem); color:var(--white); margin-bottom:.5rem; }
+    .stab-sub { font-size:.85rem; color:rgba(255,255,255,.5); line-height:1.8; margin-bottom:1.5rem; }
+    .stab-sub strong { color:var(--white); }
+    .cur-row { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(.5rem,2vw,.9rem); margin-bottom:1.5rem; }
+    @media(max-width:380px) { .cur-row { grid-template-columns:1fr; } }
+    .cur-card { background:rgba(255,255,255,.06); border-radius:var(--radius); padding:clamp(.8rem,2vw,1.1rem); text-align:center; }
+    .cur-flag { font-size:1.3rem; margin-bottom:.35rem; }
+    .cur-name { font-weight:700; color:var(--white); font-size:.78rem; }
+    .cur-use { font-size:.7rem; color:rgba(255,255,255,.38); margin-top:.22rem; line-height:1.4; }
+
+    .ex-card { background:rgba(26,122,74,.15); border:1px solid rgba(26,122,74,.4); border-radius:var(--radius); padding:clamp(.9rem,3vw,1.4rem); }
+    .ex-lbl { font-size:.72rem; font-weight:700; color:#6ee8a0; text-transform:uppercase; letter-spacing:.06em; margin-bottom:.9rem; }
+    .ex-cols { display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(.5rem,2vw,.9rem); }
+    @media(max-width:460px) { .ex-cols { grid-template-columns:1fr; } }
+    .ex-col { text-align:center; }
+    .ex-col-lbl { font-size:.68rem; color:rgba(255,255,255,.38); margin-bottom:.35rem; }
+    .ex-col-val { font-family:'Playfair Display',serif; font-size:clamp(1rem,3vw,1.4rem); font-weight:700; line-height:1.15; }
+    .ex-col-note { font-size:.65rem; color:rgba(255,255,255,.32); margin-top:.25rem; line-height:1.4; }
+    .ex-foot { margin-top:1rem; font-size:.75rem; color:rgba(255,255,255,.42); text-align:center; line-height:1.65; }
+
+    .loop-card { background:rgba(201,168,76,.1); border:1px solid rgba(201,168,76,.22); border-radius:var(--radius); padding:clamp(1rem,3vw,1.4rem); }
+    .loop-title { font-weight:700; color:var(--gold); font-size:.75rem; text-transform:uppercase; letter-spacing:.07em; margin-bottom:.45rem; }
+    .loop-text { font-size:.82rem; color:rgba(255,255,255,.5); line-height:1.85; }
+
+    /* VESTING */
+    .vest-bg { background:var(--cream); }
+    .vest-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:var(--radius-lg); box-shadow:var(--shadow); }
+    .vest-table { width:100%; border-collapse:collapse; min-width:580px; }
+    .vest-table thead { background:var(--navy); }
+    .vest-table thead th { padding:.9rem 1.1rem; text-align:left; font-size:.72rem; font-weight:600; color:rgba(255,255,255,.6); text-transform:uppercase; letter-spacing:.06em; white-space:nowrap; }
+    .vest-table tbody tr { background:var(--white); border-bottom:1px solid var(--border); transition:background .15s; }
+    .vest-table tbody tr:hover { background:var(--green-ll); }
+    .vest-table tbody tr:last-child { border-bottom:none; }
+    .vest-table tbody td { padding:.85rem 1.1rem; font-size:.86rem; color:var(--navy); }
+    .vest-table tbody td:first-child { font-weight:600; }
+    .badge { display:inline-block; padding:.22rem .7rem; border-radius:20px; font-size:.72rem; font-weight:600; }
+    .badge-g { background:var(--green-l); color:var(--green-d); }
+    .badge-au { background:var(--gold-l); color:#8a6a1a; }
+    .badge-n { background:#e8ecf0; color:var(--navy); }
+    .scroll-hint { font-size:.75rem; color:var(--gray-l); margin-top:.6rem; display:none; }
+    @media(max-width:680px) { .scroll-hint { display:block; } }
+
+    /* ROADMAP */
+    .road-bg { background:var(--navy); padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,2.5rem); }
+    .road-inner { max-width:860px; margin:0 auto; }
+    .timeline { position:relative; padding-left:clamp(1.5rem,4vw,2.2rem); }
+    .timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:rgba(255,255,255,.08); }
+    .tl-item { position:relative; padding-left:clamp(.9rem,2.5vw,1.4rem); margin-bottom:2rem; }
+    .tl-item:last-child { margin-bottom:0; }
+    .tl-dot { position:absolute; left:calc(-1 * clamp(1.5rem,4vw,2.2rem) - 8px); top:.3rem; width:18px; height:18px; border-radius:50%; border:3px solid var(--navy); }
+    .tl-dot.done { background:var(--green); }
+    .tl-dot.active { background:var(--gold); box-shadow:0 0 0 4px rgba(201,168,76,.22); }
+    .tl-dot.soon { background:#1e3347; border-color:#1e3347; }
+    .tl-phase { font-size:.72rem; color:var(--gold); font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin-bottom:.25rem; }
+    .tl-title { font-family:'Playfair Display',serif; font-size:clamp(1rem,2.5vw,1.25rem); color:var(--white); margin-bottom:.35rem; }
+    .tl-desc { font-size:.82rem; color:rgba(255,255,255,.42); line-height:1.7; }
+
+    /* CARDANO */
+    .card-bg { background:var(--white); }
+    .c-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(190px,100%),1fr)); gap:1.1rem; }
+    .c-card { background:var(--cream); border-radius:var(--radius-lg); padding:1.4rem; border:1px solid var(--border); transition:border-color .2s,transform .2s; }
+    .c-card:hover { border-color:var(--green); transform:translateY(-2px); }
+    .c-icon { font-size:1.7rem; margin-bottom:.7rem; }
+    .c-title { font-weight:700; font-size:.88rem; color:var(--navy); margin-bottom:.35rem; }
+    .c-desc { font-size:.78rem; color:var(--gray); line-height:1.65; }
+
+    /* CTA */
+    .cta { background:var(--green); padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,2rem); text-align:center; }
+    .cta h2 { font-family:'Playfair Display',serif; font-size:clamp(1.7rem,4vw,2.5rem); color:var(--white); margin-bottom:.7rem; }
+    .cta p { color:rgba(255,255,255,.7); font-size:clamp(.88rem,2vw,1rem); margin-bottom:2rem; max-width:440px; margin-left:auto; margin-right:auto; }
+
+    /* FOOTER */
+    footer { background:var(--navy); color:rgba(255,255,255,.55); padding:clamp(2rem,5vw,3.5rem) clamp(1rem,4vw,2.5rem) 1.5rem; }
+    .ft-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:clamp(1rem,3vw,2rem); }
+    @media(max-width:680px) { .ft-grid { grid-template-columns:1fr 1fr; } }
+    @media(max-width:400px) { .ft-grid { grid-template-columns:1fr; } }
+    .ft-brand img { height:36px; margin-bottom:.8rem; }
+    .ft-brand p { font-size:.78rem; line-height:1.75; }
+    .ft-socials { display:flex; gap:.7rem; margin-top:.9rem; }
+    .ft-socials img { height:20px; opacity:.55; transition:opacity .2s; }
+    .ft-socials img:hover { opacity:1; }
+    .ft-col h4 { color:var(--white); font-size:.72rem; font-weight:700; margin-bottom:.9rem; text-transform:uppercase; letter-spacing:.07em; }
+    .ft-col ul { list-style:none; display:flex; flex-direction:column; gap:.42rem; }
+    .ft-col ul a { font-size:.78rem; color:rgba(255,255,255,.5); transition:color .2s; }
+    .ft-col ul a:hover { color:var(--gold); }
+    .ft-bottom { max-width:1100px; margin:2rem auto 0; padding-top:1.4rem; border-top:1px solid rgba(255,255,255,.08); text-align:center; font-size:.72rem; }
+  </style>
+</head>
+<body>
+  <reads-nav></reads-nav>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo"><img src="assets/reads-logo.png" alt="READS"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="token.html">Token</a></li>
+    <li><a href="tokenomics.html">Tokenomics</a></li>
+    <li><a href="whitepaper.html">Whitepaper</a></li>
+    <li><a href="presale.html">Presale</a></li>
+  </ul>
+  <button class="hamburger" id="hbg" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="features.html">Features</a>
+  <a href="team.html">Team</a>
+  <a href="token.html">Token</a>
+  <a href="tokenomics.html">Tokenomics</a>
+  <a href="whitepaper.html">Whitepaper</a>
+  <a href="presale.html">Join Presale →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="chip chip-gold">📊 Token Economics</div>
+    <h1>$READS <em>Tokenomics</em></h1>
+    <p class="hero-sub">A transparent, deflationary token economy built to reward students, grow the ecosystem, and create lasting value for every stakeholder.</p>
+    <div class="hero-btns">
+      <a href="presale.html" class="btn btn-gold">🚀 Join Presale</a>
+      <a href="whitepaper.html" class="btn btn-ghost">📄 Whitepaper</a>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPLY -->
+<div class="supply">
+  <div class="supply-num">100,000,000</div>
+  <div class="supply-lbl">Total $READS Token Supply — Fixed Forever</div>
+  <div class="supply-sub2">No minting after launch · No inflation · Deflationary by design</div>
+  <div class="supply-pills">
+    <span class="supply-pill">Cardano Native</span>
+    <span class="supply-pill">Ticker: $READS</span>
+    <span class="supply-pill">5 Launch Phases</span>
+    <span class="supply-pill">🔥 20% Fee Burn</span>
+    <span class="supply-pill">Fiat Price Layer</span>
+  </div>
+</div>
+
+<!-- DISTRIBUTION -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-lbl">Allocation</div>
+    <h2 class="sec-title">Token Distribution</h2>
+    <p class="sec-sub">Every token has a purpose. Our allocation puts students first — 60% exists solely to reward learning.</p>
+    <div class="dist-wrap">
+      <div class="pie-wrap">
+        <svg class="pie-svg" viewBox="0 0 100 100" aria-hidden="true">
+          <!-- r=38, circ≈238.76 | 60%=143.3 | 15%=35.8 | 10%=23.9 | 10%=23.9 | 5%=11.9 -->
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#1a7a4a" stroke-width="18" stroke-dasharray="143.3 95.5" stroke-dashoffset="0"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#c9a84c" stroke-width="18" stroke-dasharray="35.8 203" stroke-dashoffset="-143.3"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#162436" stroke-width="18" stroke-dasharray="23.9 215" stroke-dashoffset="-179.1"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#4a9e72" stroke-width="18" stroke-dasharray="23.9 215" stroke-dashoffset="-203"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#e8a020" stroke-width="18" stroke-dasharray="11.9 227" stroke-dashoffset="-226.9"/>
+        </svg>
+        <div class="pie-ctr">
+          <div class="pie-ctr-num">100M</div>
+          <div class="pie-ctr-lbl">$READS</div>
+        </div>
+      </div>
+      <div class="legend">
+        <div class="lg-item">
+          <div class="lg-dot" style="background:#1a7a4a"></div>
+          <div><div class="lg-name">Learn-to-Earn Rewards <span class="lg-pct" style="color:#1a7a4a">60%</span></div><div class="lg-desc">60M tokens rewarding students for lessons, quizzes, streaks and milestones. The biggest allocation — by design.</div></div>
+        </div>
+        <div class="lg-item">
+          <div class="lg-dot" style="background:#c9a84c"></div>
+          <div><div class="lg-name">Marketing & Partnerships <span class="lg-pct" style="color:#c9a84c">15%</span></div><div class="lg-desc">Community growth, school outreach, strategic collaborations, and 500 $READS welcome bonuses per approved partner.</div></div>
+        </div>
+        <div class="lg-item">
+          <div class="lg-dot" style="background:#162436"></div>
+          <div><div class="lg-name">Ecosystem Development <span class="lg-pct" style="color:#162436">10%</span></div><div class="lg-desc">Platform upgrades, AI tutor, new features, infrastructure, and content creation. Released quarterly over 2 years.</div></div>
+        </div>
+        <div class="lg-item">
+          <div class="lg-dot" style="background:#4a9e72"></div>
+          <div><div class="lg-name">Team & Advisors <span class="lg-pct" style="color:#4a9e72">10%</span></div><div class="lg-desc">12-month cliff then 24-month linear vesting. Long-term alignment — the team only wins when the community wins.</div></div>
+        </div>
+        <div class="lg-item">
+          <div class="lg-dot" style="background:#e8a020"></div>
+          <div><div class="lg-name">Liquidity & Reserves <span class="lg-pct" style="color:#e8a020">5%</span></div><div class="lg-desc">Exchange liquidity pools and emergency reserves for token launch stability.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UTILITY -->
+<section class="sec utility-bg">
+  <div class="sec-inner">
+    <div class="sec-lbl">Utility</div>
+    <h2 class="sec-title">What $READS Does</h2>
+    <p class="sec-sub">$READS is not just a reward token. It's the single currency powering every transaction on the platform.</p>
+    <div class="u-grid">
+      <div class="u-card"><div class="u-icon">📚</div><div class="u-title">Earn by Learning</div><div class="u-desc">Complete lessons, pass quizzes, maintain study streaks. Premium users earn 2× tokens automatically.</div></div>
+      <div class="u-card"><div class="u-icon">🎓</div><div class="u-title">Exam Registration</div><div class="u-desc">Pay for real JAMB, WAEC, NECO, BECE, SAT, IELTS registrations entirely in $READS.</div></div>
+      <div class="u-card"><div class="u-icon">🏫</div><div class="u-title">School Fees</div><div class="u-desc">Partner schools accept term fees in $READS via escrow. Released when Finance Officers confirm receipt.</div></div>
+      <div class="u-card"><div class="u-icon">👨‍🏫</div><div class="u-title">Tutor Sessions</div><div class="u-desc">Book verified platform tutors in $READS. Escrow protects both sides until the session is confirmed.</div></div>
+      <div class="u-card"><div class="u-icon">🛒</div><div class="u-title">EduContent Marketplace</div><div class="u-desc">Buy and sell study materials peer-to-peer in $READS. No middlemen. No fiat. No fees beyond platform cut.</div></div>
+      <div class="u-card"><div class="u-icon">🏆</div><div class="u-title">Tournaments</div><div class="u-desc">Enter School→State→National→Global challenges. Top performers earn $READS prize pools.</div></div>
+      <div class="u-card"><div class="u-icon">🔓</div><div class="u-title">Premium Access</div><div class="u-desc">Unlock premium content, unlimited AI tutor sessions, and advanced features by spending $READS.</div></div>
+      <div class="u-card"><div class="u-icon">🏅</div><div class="u-title">NFT Certificates</div><div class="u-desc">Results issued as Cardano NFT certificates — tamper-proof, permanent digital proof of achievement.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER -->
+<section class="sec partner-bg">
+  <div class="sec-inner">
+    <div class="sec-lbl">Partner Economics</div>
+    <h2 class="sec-title">Partner Token Model</h2>
+    <p class="sec-sub">Partners are stakeholders, not customers. Zero fees to join. Real token rewards for participating.</p>
+    <div class="p-grid">
+      <div class="p-card"><div class="p-icon">🎁</div><div class="p-title">500 $READS Welcome Bonus</div><div class="p-desc">Every approved partner — school, CBT centre, or tutor — receives 500 $READS on approval. No conditions, no strings. Our first act of trust.</div></div>
+      <div class="p-card"><div class="p-icon">🚫</div><div class="p-title">Zero Onboarding Fees</div><div class="p-desc">Partners pay nothing to join. No subscription, no listing fee, no setup charge. They're already taking a risk integrating a new token. We don't add to that.</div></div>
+      <div class="p-card"><div class="p-icon">💸</div><div class="p-title">Transaction Fees Only</div><div class="p-desc">$READS earns a platform fee on exam registrations, school fees, and tutor sessions — deducted from escrow. Partners only contribute when they're earning.</div></div>
+    </div>
+    <div class="p-note">
+      <strong>The Alignment Logic</strong>
+      Partners holding their 500 $READS welcome bonus benefit directly from token price appreciation as the platform grows. A school pushing its students to use $READS for CBT practice is also making its own held tokens more valuable. That's not an accident — it's the design.
+    </div>
+  </div>
+</section>
+
+<!-- BURN MECHANISM -->
+<section class="burn-bg">
+  <div class="burn-inner">
+    <div class="chip chip-burn">🔥 Deflationary Mechanism</div>
+    <h2 class="sec-title sec-title-white" style="margin-bottom:.5rem;">Token Burn Mechanism</h2>
+    <p class="sec-sub sec-sub-dim">Every transaction permanently removes tokens from circulation. Fixed supply. Shrinking circulation. Growing demand.</p>
+
+    <!-- 20 / 80 -->
+    <div class="burn-split">
+      <div class="burn-box">
+        <div class="burn-box-num" style="color:var(--burn);">20%</div>
+        <div class="burn-box-sub">of every transaction fee collected</div>
+        <div class="burn-box-lbl">🔥 Burned permanently</div>
+      </div>
+      <div class="burn-box">
+        <div class="burn-box-num" style="color:var(--gold);">80%</div>
+        <div class="burn-box-sub">of every transaction fee collected</div>
+        <div class="burn-box-lbl">🏦 Platform revenue</div>
+      </div>
+    </div>
+
+    <!-- WHAT BURNS / WHAT DOESN'T -->
+    <div class="burn-rows">
+      <div class="burn-row-card" style="background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.22);">
+        <div class="burn-row-title" style="color:#ff9a7a;">🔥 What Gets Burned</div>
+        <ul>
+          <li>20% of exam registration fees</li>
+          <li>20% of school term fee transaction fees</li>
+          <li>20% of tutor session fees</li>
+          <li>20% of marketplace transaction fees</li>
+          <li>Expired / unclaimed student rewards</li>
+          <li>Cancelled exam escrow residuals</li>
+        </ul>
+      </div>
+      <div class="burn-row-card" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.22);">
+        <div class="burn-row-title" style="color:var(--gold);">✅ What Burning Never Touches</div>
+        <ul>
+          <li>Student reward earnings — fully protected</li>
+          <li>Partner welcome bonuses</li>
+          <li>Presale buyer allocations</li>
+          <li>Team & advisor vesting pool</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PRICE STABILITY -->
+    <div class="stab-card">
+      <div class="stab-title">💱 Price Stability Layer — Partners Price in Fiat</div>
+      <p class="stab-sub">Burning pushes token price up. But higher prices shouldn't burden students paying for services. Our solution: <strong>partners set prices in fiat currency — the platform auto-converts to $READS at real-time market rate at the moment of payment.</strong></p>
+      <div class="cur-row">
+        <div class="cur-card"><div class="cur-flag">🇳🇬</div><div class="cur-name">Nigerian Naira (₦)</div><div class="cur-use">Schools, CBT centres, local tutors</div></div>
+        <div class="cur-card"><div class="cur-flag">🇺🇸</div><div class="cur-name">US Dollar ($)</div><div class="cur-use">International partners & content</div></div>
+        <div class="cur-card"><div class="cur-flag">🇬🇧</div><div class="cur-name">British Pound (£)</div><div class="cur-use">SAT & IELTS exam partners</div></div>
+      </div>
+      <div class="ex-card">
+        <div class="ex-lbl">📐 Worked Example — School Term Fee</div>
+        <div class="ex-cols">
+          <div class="ex-col"><div class="ex-col-lbl">Partner sets price at</div><div class="ex-col-val" style="color:#fff;">₦50,000</div><div class="ex-col-note">Fixed in Naira. Never changes.</div></div>
+          <div class="ex-col"><div class="ex-col-lbl">If $READS = ₦10</div><div class="ex-col-val" style="color:var(--gold);">5,000 $READS</div><div class="ex-col-note">Student pays at current rate</div></div>
+          <div class="ex-col"><div class="ex-col-lbl">If $READS = ₦25</div><div class="ex-col-val" style="color:#6ee8a0;">2,000 $READS</div><div class="ex-col-note">Fewer tokens as price rises</div></div>
+        </div>
+        <div class="ex-foot">Partner always receives ₦50,000 worth of value. Student always pays fair market rate. Appreciation rewards holders — it never burdens spenders.</div>
+      </div>
+    </div>
+
+    <div class="loop-card">
+      <div class="loop-title">Why This System Is Self-Reinforcing</div>
+      <p class="loop-text">Burning reduces supply → scarcity pushes price up → students need fewer tokens for the same real-world service → token becomes more attractive to hold → demand rises → price rises further → transaction values grow → more tokens burned per cycle. Every part of the loop strengthens every other part.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VESTING -->
+<section class="sec vest-bg">
+  <div class="sec-inner">
+    <div class="sec-lbl">Vesting</div>
+    <h2 class="sec-title">Vesting Schedule</h2>
+    <p class="sec-sub">Transparent vesting protects the community by preventing large dumps at launch.</p>
+    <div class="vest-wrap">
+      <table class="vest-table">
+        <thead>
+          <tr><th>Allocation</th><th>%</th><th>Tokens</th><th>Cliff</th><th>Vesting</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Learn-to-Earn Rewards</td><td>60%</td><td>60,000,000</td><td>None</td><td>Released continuously as students earn</td><td><span class="badge badge-g">Active</span></td></tr>
+          <tr><td>Marketing & Partnerships</td><td>15%</td><td>15,000,000</td><td>None</td><td>Milestone-based releases</td><td><span class="badge badge-au">Scheduled</span></td></tr>
+          <tr><td>Ecosystem Development</td><td>10%</td><td>10,000,000</td><td>None</td><td>Quarterly over 2 years</td><td><span class="badge badge-n">Locked</span></td></tr>
+          <tr><td>Team & Advisors</td><td>10%</td><td>10,000,000</td><td>12 months</td><td>24-month linear after cliff</td><td><span class="badge badge-n">Locked</span></td></tr>
+          <tr><td>Liquidity & Reserves</td><td>5%</td><td>5,000,000</td><td>None</td><td>Held in reserve wallet</td><td><span class="badge badge-au">Reserved</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="scroll-hint">← Swipe to see full table</p>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="road-bg">
+  <div class="road-inner">
+    <div class="sec-lbl" style="color:var(--gold);">Roadmap</div>
+    <h2 class="sec-title sec-title-white" style="margin-bottom:.5rem;">Token Launch Roadmap</h2>
+    <p class="sec-sub sec-sub-dim">Five phases from MVP to global expansion.</p>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot done"></div><div class="tl-phase">Phase 1 — Current</div><div class="tl-title">MVP + Presale Preparation</div><div class="tl-desc">Platform in beta. Presale waitlist live. Smart contract in development. Community building underway.</div></div>
+      <div class="tl-item"><div class="tl-dot active"></div><div class="tl-phase">Phase 2</div><div class="tl-title">Full App Launch + Presale Opens</div><div class="tl-desc">Platform live for students and schools. Presale opens to waitlist. Early-bird tiers activated. Fiat-to-$READS price oracle live.</div></div>
+      <div class="tl-item"><div class="tl-dot soon"></div><div class="tl-phase">Phase 3</div><div class="tl-title">Partnerships + Presale Close</div><div class="tl-desc">School partnerships scaled nationally. Presale closes. Smart contract audited. Burn mechanism activated. Project Catalyst grant active.</div></div>
+      <div class="tl-item"><div class="tl-dot soon"></div><div class="tl-phase">Phase 4</div><div class="tl-title">Token Launch + Exchange Listings</div><div class="tl-desc">$READS minted on Cardano. Presale tokens distributed. Exchange listings. NFT certificates live. First quarterly burn event.</div></div>
+      <div class="tl-item"><div class="tl-dot soon"></div><div class="tl-phase">Phase 5</div><div class="tl-title">Global Expansion</div><div class="tl-desc">Beyond Nigeria. SAT/IELTS fully integrated. 1M+ user target. Staking and governance. GBP/USD pricing live for international partners.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CARDANO -->
+<section class="sec card-bg">
+  <div class="sec-inner">
+    <div class="sec-lbl">Blockchain</div>
+    <h2 class="sec-title">Why Cardano?</h2>
+    <p class="sec-sub">Six reasons Cardano is the right chain for an African EdTech token.</p>
+    <div class="c-grid">
+      <div class="c-card"><div class="c-icon">⚡</div><div class="c-title">Near-Zero Fees</div><div class="c-desc">Fractions of a cent per transaction. A student earning tokens daily can't absorb $20 gas fees.</div></div>
+      <div class="c-card"><div class="c-icon">🌱</div><div class="c-title">Energy Efficient</div><div class="c-desc">Proof-of-Stake consumes 99% less energy than Bitcoin. Responsible for an education platform.</div></div>
+      <div class="c-card"><div class="c-icon">🌍</div><div class="c-title">Africa-Focused</div><div class="c-desc">Deep roots in Africa — real projects in Ethiopia and across the continent. Right ecosystem.</div></div>
+      <div class="c-card"><div class="c-icon">🔒</div><div class="c-title">Research-Backed</div><div class="c-desc">Built on peer-reviewed academic research. For a platform handling student results and fees, security is non-negotiable.</div></div>
+      <div class="c-card"><div class="c-icon">🏅</div><div class="c-title">Native Token</div><div class="c-desc">$READS is a Cardano native token — not a smart contract token — inheriting ADA's security layer.</div></div>
+      <div class="c-card"><div class="c-icon">🗳️</div><div class="c-title">Project Catalyst</div><div class="c-desc">Community grant fund backing African EdTech. Non-dilutive funding path directly available to $READS.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Ready to Own $READS Before Launch?</h2>
+  <p>Join the presale waitlist and lock in your early-bird bonus before slots fill up.</p>
+  <a href="presale.html" class="btn btn-gold">🚀 Join Presale Waitlist</a>
+</section>
+
+<!-- FOOTER -->
+
+<<script src="js/components.js"></script>
+  
+  <script src="js/components.js" defer></script>
+  <reads-footer></reads-footer>
+</body>
+</html>

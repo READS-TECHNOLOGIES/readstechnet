@@ -29,36 +29,14 @@
     .read-link { font-size: 0.9rem; font-weight: 600; color: var(--highlight-color); text-decoration: none; transition: color 0.2s; }
     .read-link:hover { color: var(--primary-color); }
   </style>
-</head>
+  </head>
 <body>
+  <reads-nav></reads-nav>
+  
 
-  <header>
-    <nav class="navbar">
-      <div class="menu-toggle" id="mobileMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+  
 
-      <img src="assets/reads-logo.png" alt="$READS Logo" class="logo" />
-
-      <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="themeToggle">
-          <input type="checkbox" id="themeToggle" />
-          <div class="slider round"></div>
-        </label>
-      </div>
-
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="token.html">Token</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  
 
 <main class="content-page">
   <div class="blog-hero">
@@ -127,50 +105,9 @@
   </div>
 </main>
 
-<footer>
-  <div class="footer-container">
-    <div class="footer-section">
-      <img src="assets/reads-logo.png" alt="$READS Logo" class="footer-logo" />
-      <p class="footer-brand-slogan">Empowering You To Study Smart</p>
-      <div class="footer-social-links">
-        <a href="https://x.com/READS_TECH_NET?s=09"><img src="assets/twitter-icon.png" alt="X" /></a>
-        <a href="https://t.me/readstoken"><img src="assets/telegram-icon.png" alt="Telegram" /></a>
-        <a href="https://www.linkedin.com/in/reads-technologies-39a947377"><img src="assets/linkedin-icon.png" alt="LinkedIn" /></a>
-      </div>
-    </div>
-    <div class="footer-section">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="token.html">Token</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="partner.html">Partnerships</a></li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h4>Legal</h4>
-      <ul>
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="terms-of-service.html">Terms of Service</a></li>
-        <li><a href="disclaimer.html">Disclaimer</a></li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h4>Support</h4>
-      <ul>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 $READS. All rights reserved.</p>
-  </div>
-</footer>
-
-<script src="js/script.js"></script>
+<script src="js/components.js"></script>
+  
+  <script src="js/components.js" defer></script>
+  <reads-footer></reads-footer>
 </body>
 </html>

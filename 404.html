@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/reads-logo.png"/>
-  <script src="js/script.js" defer></script>
   <style>
     .error-page {
       min-height: 70vh;
@@ -36,30 +35,13 @@
       opacity: 0.8;
     }
   </style>
-</head>
+  </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="menu-toggle" id="mobileMenu">
-        <span></span><span></span><span></span>
-      </div>
-      <img src="assets/reads-logo.png" alt="$READS Logo" class="logo" />
-      <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="themeToggle">
-          <input type="checkbox" id="themeToggle" />
-          <div class="slider round"></div>
-        </label>
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="features.html">Features</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="token.html">Token</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <reads-nav></reads-nav>
+  
+
+  
+  
 
   <main class="error-page">
     <div class="error-code">404</div>
@@ -68,10 +50,13 @@
     <a href="index.html" class="btn primary-btn">Back to Home</a>
   </main>
 
-  <footer>
-    <div class="footer-bottom">
-      <p>&copy; 2026 $READS. All rights reserved.</p>
-    </div>
-  </footer>
+  
+
+  
+
+<script src="js/components.js"></script>
+  
+  <script src="js/components.js" defer></script>
+  <reads-footer></reads-footer>
 </body>
 </html>

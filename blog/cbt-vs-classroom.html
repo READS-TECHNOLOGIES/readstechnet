@@ -52,8 +52,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="icon" href="../assets/reads-logo.png"/>
-  <script src="../js/script.js" defer></script>
-
   <style>
     .article-hero {
       background: linear-gradient(135deg, #1a5c3a 0%, #0d3322 100%);
@@ -249,30 +247,13 @@
     }
     .related-card h4 { font-size: 0.95rem; line-height: 1.4; }
   </style>
+    
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="menu-toggle" id="mobileMenu">
-        <span></span><span></span><span></span>
-      </div>
-      <img src="../assets/reads-logo.png" alt="$READS Logo" class="logo" />
-      <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="themeToggle">
-          <input type="checkbox" id="themeToggle" />
-          <div class="slider round"></div>
-        </label>
-      </div>
-      <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li><a href="../features.html">Features</a></li>
-        <li><a href="../team.html">Team</a></li>
-        <li><a href="../token.html">Token</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <reads-nav depth="1"></reads-nav>
+  
+
+  
 
   <div class="article-hero">
     <div class="breadcrumb-nav">
@@ -475,50 +456,16 @@
     </div>
   </div>
 
-  <footer>
-    <div class="footer-container">
-      <div class="footer-section">
-        <img src="../assets/reads-logo.png" alt="$READS Logo" class="footer-logo">
-        <p class="footer-brand-slogan">Empowering You To Study Smart</p>
-        <div class="footer-social-links">
-          <a href="https://x.com/READS_TECH_NET?s=09" target="_blank"><img src="../assets/twitter-icon.png" alt="X"></a>
-          <a href="https://t.me/readstoken" target="_blank"><img src="../assets/telegram-icon.png" alt="Telegram"></a>
-          <a href="https://www.linkedin.com/in/reads-technologies-39a947377" target="_blank"><img src="../assets/linkedin-icon.png" alt="LinkedIn"></a>
-        </div>
-      </div>
-      <div class="footer-section">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../about.html">About Us</a></li>
-          <li><a href="../features.html">Features</a></li>
-          <li><a href="../blog.html">Blog</a></li>
-          <li><a href="../token.html">Token</a></li>
-          <li><a href="../contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="../terms-of-service.html">Terms of Service</a></li>
-          <li><a href="../disclaimer.html">Disclaimer</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Support</h4>
-        <ul>
-          <li><a href="../faq.html">FAQ</a></li>
-          <li><a href="../contact.html">Contact Us</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 $READS. All rights reserved.</p>
-    </div>
-  </footer>
+  
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init({ duration: 800, once: true });</script>
+
+  
+
+<script src="../js/components.js"></script>
+  
+  <script src="../js/components.js" defer></script>
+  <reads-footer depth="1"></reads-footer>
 </body>
 </html>

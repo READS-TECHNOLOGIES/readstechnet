@@ -1818,3 +1818,105 @@ main.content-page h1 {
         font-size: 1rem;
     }
 }
+/* ── Web Component nav CTA link ── */
+.nav-links .nav-cta-link {
+    background: var(--highlight-color);
+    color: #fff !important;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+.nav-links .nav-cta-link:hover {
+    background: var(--primary-color);
+    color: var(--text-color) !important;
+}
+.nav-links .nav-cta-link::after { display: none !important; }
+
+/* Desktop nav — horizontal layout */
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        transform: none;
+        box-shadow: none;
+        background: transparent;
+        padding: 0;
+        width: auto;
+        gap: 20px;
+    }
+    .nav-links li { margin: 0; }
+    .menu-toggle { display: none; }
+}
+
+/* ── Web Component: nav CTA link (Presale button) ── */
+.nav-links .nav-cta-link {
+    background-color: var(--highlight-color);
+    color: #ffffff !important;
+    padding: 0.4rem 1.1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.nav-links .nav-cta-link:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-1px);
+}
+.nav-links .nav-cta-link::after { display: none !important; }
+
+/* Desktop nav — inline horizontal links */
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex !important;
+        flex-direction: row !important;
+        position: static !important;
+        transform: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        width: auto !important;
+        gap: 18px !important;
+    }
+    .nav-links li { margin: 0 !important; }
+    .menu-toggle { display: none !important; }
+}
+
+/* ─── Web Component nav CTA button ─── */
+.nav-links .nav-cta-link {
+    background-color: var(--highlight-color);
+    color: #ffffff !important;
+    padding: 0.4rem 1.1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.nav-links .nav-cta-link:hover {
+    background-color: var(--primary-color) !important;
+    color: var(--navy) !important;
+    transform: translateY(-1px);
+}
+.nav-links .nav-cta-link::after { display: none; }
+
+/* Desktop nav — horizontal layout */
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+        width: auto;
+        gap: 20px;
+    }
+    .nav-links li { margin: 0; }
+    .navbar .logo {
+        position: static;
+        transform: none;
+    }
+    .navbar {
+        justify-content: space-between;
+    }
+    .menu-toggle { display: none; }
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>$READS Presale — Join the Waitlist | READS Technologies</title>
+  <meta name="description" content="Be among the first to own $READS tokens. Join the presale waitlist and secure your early-bird allocation before public launch."/>
+  <link rel="canonical" href="https://readstechnet.vercel.app/presale.html"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .presale-hero{background:linear-gradient(160deg,var(--text-color) 0%,#1a3a28 100%);padding:clamp(3.5rem,8vw,6rem) clamp(1rem,5vw,2.5rem) clamp(3rem,7vw,5rem);text-align:center;position:relative;overflow:hidden}
+    .presale-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 20% 40%,rgba(212,175,55,.14) 0%,transparent 70%),radial-gradient(ellipse 50% 60% at 80% 20%,rgba(45,139,123,.2) 0%,transparent 60%);pointer-events:none}
+    .ph-inner{position:relative;max-width:760px;margin:0 auto}
+    .ph-chip{display:inline-flex;align-items:center;gap:.5rem;background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.35);color:var(--primary-color);padding:.35rem 1rem;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.5rem}
+    .presale-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3.8rem);font-weight:900;line-height:1.1;color:#fff;margin-bottom:1rem}
+    .presale-hero h1 em{color:var(--primary-color);font-style:italic}
+    .presale-hero>div>p{font-size:clamp(.9rem,2vw,1.05rem);color:rgba(255,255,255,.65);max-width:540px;margin:0 auto 2.5rem;line-height:1.8}
+    .countdown{display:flex;justify-content:center;gap:clamp(.5rem,2vw,1rem);margin-bottom:2.5rem;flex-wrap:wrap}
+    .cd-box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:clamp(.8rem,2vw,1.1rem) clamp(.9rem,2vw,1.4rem);min-width:clamp(60px,12vw,80px);text-align:center;backdrop-filter:blur(8px)}
+    .cd-num{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;color:var(--primary-color);line-height:1}
+    .cd-lbl{font-size:.65rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.08em;margin-top:.3rem}
+    .wl-wrap{max-width:520px;margin:0 auto}
+    .wl-card{background:#fff;border-radius:16px;padding:clamp(1.5rem,4vw,2.5rem);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+    [data-theme="dark"] .wl-card{background:var(--card-bg)}
+    .wl-card h2{font-family:'Playfair Display',serif;font-size:1.45rem;color:var(--text-color);margin-bottom:.35rem}
+    .wl-card>p{font-size:.86rem;color:var(--secondary-color);margin-bottom:1.3rem;line-height:1.6}
+    .wl-form{display:flex;flex-direction:column;gap:.85rem}
+    .wl-form input,.wl-form select{width:100%;padding:.82rem 1rem;border:1.5px solid var(--border-color);border-radius:8px;font-family:inherit;font-size:.92rem;color:var(--text-color);background:var(--card-bg);outline:none;transition:border-color .2s}
+    .wl-form input:focus,.wl-form select:focus{border-color:var(--highlight-color)}
+    .wl-btn{width:100%;background:var(--highlight-color);color:#fff;border:none;padding:.95rem;border-radius:8px;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;transition:background .2s,transform .1s}
+    .wl-btn:hover{background:var(--primary-color);color:var(--text-color);transform:translateY(-1px)}
+    .wl-note{font-size:.75rem;color:var(--secondary-color);text-align:center;margin-top:.5rem}
+    .wl-success{display:none;background:rgba(45,139,123,.1);border:1px solid var(--highlight-color);border-radius:10px;padding:1.1rem;text-align:center;color:var(--highlight-color);font-weight:600;margin-top:1rem}
+    .stats-band{background:var(--primary-color);padding:2rem clamp(1rem,4vw,2rem);display:flex;justify-content:center;gap:clamp(1.5rem,5vw,4rem);flex-wrap:wrap}
+    .sb-item{text-align:center}
+    .sb-num{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:var(--text-color)}
+    .sb-lbl{font-size:.76rem;color:rgba(44,62,80,.75);margin-top:.2rem;font-weight:600}
+    .ps-sec{padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,2.5rem)}
+    .ps-inner{max-width:1100px;margin:0 auto}
+    .ps-lbl{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--highlight-color);margin-bottom:.5rem}
+    .ps-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.4rem);color:var(--text-color);margin-bottom:.6rem}
+    .ps-sub{font-size:clamp(.88rem,2vw,.98rem);color:var(--secondary-color);max-width:560px;line-height:1.8;margin-bottom:clamp(2rem,5vw,3rem)}
+    .tiers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(250px,100%),1fr));gap:1.3rem}
+    .tier-card{border:2px solid var(--border-color);border-radius:16px;padding:clamp(1.3rem,3vw,2rem);background:var(--card-bg);position:relative;transition:transform .2s,box-shadow .2s}
+    .tier-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px var(--box-shadow)}
+    .tier-card.featured{border-color:var(--highlight-color);background:linear-gradient(135deg,rgba(45,139,123,.07),var(--card-bg))}
+    .tier-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--highlight-color);color:#fff;font-size:.7rem;font-weight:700;padding:.28rem 1rem;border-radius:20px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+    .tier-name{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--text-color);margin-bottom:.3rem}
+    .tier-slots{font-size:.78rem;color:var(--secondary-color);margin-bottom:1rem}
+    .tier-bonus{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--highlight-color)}
+    .tier-bonus-lbl{font-size:.82rem;color:var(--secondary-color);margin-bottom:1.4rem}
+    .tier-perks{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+    .tier-perks li{font-size:.86rem;color:var(--text-color);display:flex;align-items:flex-start;gap:.5rem}
+    .tier-perks li::before{content:'✓';color:var(--highlight-color);font-weight:700;flex-shrink:0}
+    .how-bg{background:var(--text-color);padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,2.5rem)}
+    .how-inner{max-width:1000px;margin:0 auto}
+    .how-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.4rem);color:#fff;margin-bottom:.5rem}
+    .how-sub{color:rgba(255,255,255,.5);font-size:.92rem;margin-bottom:clamp(2rem,5vw,3rem)}
+    .steps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(180px,100%),1fr));gap:1.5rem}
+    .step-card{text-align:center}
+    .step-num{width:50px;height:50px;border-radius:50%;background:var(--primary-color);color:var(--text-color);font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem}
+    .step-title{font-weight:700;color:#fff;margin-bottom:.45rem;font-size:.92rem}
+    .step-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.65}
+    .details-bg{background:var(--card-bg)}
+    .det-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,3rem);align-items:start}
+    @media(max-width:680px){.det-grid{grid-template-columns:1fr}}
+    .det-table{width:100%;border-collapse:collapse}
+    .det-table tr{border-bottom:1px solid var(--border-color)}
+    .det-table tr:last-child{border-bottom:none}
+    .det-table td{padding:.9rem 0;font-size:.9rem}
+    .det-table td:first-child{color:var(--secondary-color)}
+    .det-table td:last-child{font-weight:600;text-align:right;color:var(--text-color)}
+    .det-visual{background:linear-gradient(135deg,var(--text-color),#1a3a28);border-radius:16px;padding:clamp(1.5rem,4vw,2.5rem);color:#fff;text-align:center}
+    .det-visual h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.4rem}
+    .det-visual>p{font-size:.82rem;color:rgba(255,255,255,.5);margin-bottom:1.5rem}
+    .det-price{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;color:var(--primary-color)}
+    .det-price-lbl{font-size:.75rem;color:rgba(255,255,255,.4);margin-bottom:1.5rem}
+    .prog-labels{display:flex;justify-content:space-between;font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:.4rem}
+    .prog-bar{background:rgba(255,255,255,.1);border-radius:999px;height:9px;overflow:hidden}
+    .prog-fill{background:var(--primary-color);height:100%;border-radius:999px;width:0;transition:width 1.2s ease}
+    .faq-bg{background:var(--background-color)}
+    .faq-inner{max-width:740px;margin:0 auto}
+    .faq-item{border-bottom:1px solid var(--border-color)}
+    .faq-q{font-weight:600;font-size:.95rem;color:var(--text-color);cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;user-select:none;gap:1rem}
+    .faq-q span{color:var(--highlight-color);font-size:1.3rem;transition:transform .2s;flex-shrink:0}
+    .faq-a{font-size:.88rem;color:var(--secondary-color);line-height:1.75;padding-bottom:1.1rem;display:none}
+    .faq-item.open .faq-a{display:block}
+    .faq-item.open .faq-q span{transform:rotate(45deg)}
+    .cta-band{background:var(--highlight-color);padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,2rem);text-align:center}
+    .cta-band h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.3rem);color:#fff;margin-bottom:.7rem}
+    .cta-band p{color:rgba(255,255,255,.75);margin-bottom:2rem;font-size:clamp(.9rem,2vw,1rem);max-width:440px;margin-left:auto;margin-right:auto}
+    .cta-btn{display:inline-block;background:var(--primary-color);color:var(--text-color);padding:.9rem 2.5rem;border-radius:8px;font-weight:700;font-size:1rem;transition:opacity .2s,transform .1s}
+    .cta-btn:hover{opacity:.9;transform:translateY(-2px)}
+  </style>
+</head>
+<body>
+  <reads-nav></reads-nav>
+  
+
+  <section class="presale-hero">
+    <div class="ph-inner">
+      <div class="ph-chip">🔥 Presale Opening Soon</div>
+      <h1>Own <em>$READS</em> Before<br/>The World Does</h1>
+      <p>Join thousands of early believers securing their allocation of the token that rewards Nigerian students for studying. Early-bird bonuses. Limited slots.</p>
+      <div class="countdown">
+        <div class="cd-box"><div class="cd-num" id="cdDays">00</div><div class="cd-lbl">Days</div></div>
+        <div class="cd-box"><div class="cd-num" id="cdHours">00</div><div class="cd-lbl">Hours</div></div>
+        <div class="cd-box"><div class="cd-num" id="cdMins">00</div><div class="cd-lbl">Mins</div></div>
+        <div class="cd-box"><div class="cd-num" id="cdSecs">00</div><div class="cd-lbl">Secs</div></div>
+      </div>
+      <div class="wl-wrap">
+        <div class="wl-card">
+          <h2>Join the Presale Waitlist</h2>
+          <p>Get notified first when presale opens. Early joiners get priority allocation + bonus tokens.</p>
+          <div class="wl-form">
+            <input type="text"  id="wlName"  placeholder="Full Name" required/>
+            <input type="email" id="wlEmail" placeholder="Email Address" required/>
+            <input type="tel"   id="wlPhone" placeholder="Phone Number (optional)"/>
+            <select id="wlType">
+              <option value="" disabled selected>I am a...</option>
+              <option value="student">Student (JAMB / WAEC / NECO)</option>
+              <option value="parent">Parent / Guardian</option>
+              <option value="investor">Crypto Investor</option>
+              <option value="school">School / Institution</option>
+              <option value="other">Other</option>
+            </select>
+            <button class="wl-btn" onclick="submitWaitlist()">🚀 Reserve My Spot — It's Free</button>
+          </div>
+          <p class="wl-note">🔒 No spam. No wallet needed yet. Just your spot in line.</p>
+          <div class="wl-success" id="wlSuccess">✅ You're on the list! We'll notify you the moment presale opens.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-band">
+    <div class="sb-item"><div class="sb-num">100M</div><div class="sb-lbl">Total $READS Supply</div></div>
+    <div class="sb-item"><div class="sb-num">15M+</div><div class="sb-lbl">JAMB/WAEC Candidates/Year</div></div>
+    <div class="sb-item"><div class="sb-num">5 Phases</div><div class="sb-lbl">Strategic Launch Roadmap</div></div>
+    <div class="sb-item"><div class="sb-num">Cardano</div><div class="sb-lbl">Native Blockchain</div></div>
+  </div>
+
+  <section class="ps-sec">
+    <div class="ps-inner">
+      <div class="ps-lbl">Early Bird</div>
+      <h2 class="ps-title">Presale Tiers</h2>
+      <p class="ps-sub">The earlier you join, the bigger your bonus. Limited slots per tier.</p>
+      <div class="tiers-grid">
+        <div class="tier-card">
+          <div class="tier-name">Pioneer</div><div class="tier-slots">First 100 wallets only</div>
+          <div class="tier-bonus">+25%</div><div class="tier-bonus-lbl">bonus tokens on purchase</div>
+          <ul class="tier-perks"><li>Pioneer NFT badge on profile</li><li>Priority access to beta app</li><li>Exclusive Pioneer Telegram group</li><li>Name in platform credits</li></ul>
+        </div>
+        <div class="tier-card featured">
+          <div class="tier-badge">⭐ Most Popular</div>
+          <div class="tier-name">Founder</div><div class="tier-slots">First 500 wallets</div>
+          <div class="tier-bonus">+15%</div><div class="tier-bonus-lbl">bonus tokens on purchase</div>
+          <ul class="tier-perks"><li>Founder NFT badge on profile</li><li>Early app access (before public)</li><li>Founder Telegram community</li><li>Quarterly AMA with the team</li></ul>
+        </div>
+        <div class="tier-card">
+          <div class="tier-name">Supporter</div><div class="tier-slots">First 2,000 wallets</div>
+          <div class="tier-bonus">+8%</div><div class="tier-bonus-lbl">bonus tokens on purchase</div>
+          <ul class="tier-perks"><li>Supporter NFT badge</li><li>Early app access</li><li>Presale Telegram group</li><li>Token launch notification</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-bg">
+    <div class="how-inner">
+      <h2 class="how-title">How the Presale Works</h2>
+      <p class="how-sub">Simple, transparent, and secure. Four steps.</p>
+      <div class="steps-grid">
+        <div class="step-card"><div class="step-num">1</div><div class="step-title">Join Waitlist</div><div class="step-desc">Sign up with your email. No wallet or payment needed at this stage.</div></div>
+        <div class="step-card"><div class="step-num">2</div><div class="step-title">Get Notified</div><div class="step-desc">We email you the moment presale opens with your personal allocation link.</div></div>
+        <div class="step-card"><div class="step-num">3</div><div class="step-title">Connect Wallet</div><div class="step-desc">Connect a Cardano wallet (Nami, Eternl, Flint) and confirm your purchase.</div></div>
+        <div class="step-card"><div class="step-num">4</div><div class="step-title">Receive Tokens</div><div class="step-desc">$READS tokens sent to your wallet at Token Launch — Phase 4.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ps-sec details-bg">
+    <div class="ps-inner">
+      <div class="ps-lbl">Details</div>
+      <h2 class="ps-title">Presale Details</h2>
+      <p class="ps-sub">Full transparency on the numbers. No hidden terms.</p>
+      <div class="det-grid">
+        <table class="det-table">
+          <tr><td>Token Name</td><td>$READS</td></tr>
+          <tr><td>Blockchain</td><td>Cardano Native</td></tr>
+          <tr><td>Total Supply</td><td>100,000,000</td></tr>
+          <tr><td>Presale Price</td><td>TBA — watch this space</td></tr>
+          <tr><td>Accepted Payment</td><td>ADA (Cardano)</td></tr>
+          <tr><td>Token Delivery</td><td>Phase 4 — Token Launch</td></tr>
+          <tr><td>Vesting</td><td>No lockup for presale buyers</td></tr>
+          <tr><td>Smart Contract</td><td>Coming Soon (audited)</td></tr>
+        </table>
+        <div class="det-visual">
+          <h3>Presale Progress</h3>
+          <p>Waitlist spots filling up. Be early.</p>
+          <div class="det-price">TBA</div>
+          <div class="det-price-lbl">Price per $READS token</div>
+          <div class="prog-labels"><span>Waitlist</span><span>Growing daily</span></div>
+          <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+          <p style="margin-top:1.2rem;font-size:.72rem;color:rgba(255,255,255,.38);">Presale opens in Phase 1 of roadmap</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ps-sec faq-bg">
+    <div class="faq-inner">
+      <div class="ps-lbl" style="text-align:center">FAQ</div>
+      <h2 class="ps-title" style="text-align:center">Presale FAQ</h2>
+      <p class="ps-sub" style="text-align:center;margin-left:auto;margin-right:auto;margin-bottom:2.5rem">Everything you need to know before joining.</p>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Do I need crypto to join the waitlist?<span>+</span></div><div class="faq-a">No. The waitlist is free and requires only your email. You only need a Cardano wallet when the presale actually opens.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Is $READS a scam or rug pull?<span>+</span></div><div class="faq-a">$READS is built by READS Technologies — a real team with publicly listed members, a working product in beta, and transparent tokenomics. Our smart contract will be audited before presale opens.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Why is $READS on Cardano?<span>+</span></div><div class="faq-a">Near-zero fees, energy efficiency, and a growing African community. Read our whitepaper for the full reasoning.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">When will I receive my tokens?<span>+</span></div><div class="faq-a">Tokens are delivered in Phase 4 — Token Launch. Presale buyers receive tokens before public exchange listings.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can I earn $READS without buying?<span>+</span></div><div class="faq-a">Yes. Earn $READS for free simply by studying on the platform. The presale is for investors who want to hold tokens before public launch.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Do you have a referral program?<span>+</span></div><div class="faq-a">Yes. Launching a referral program for presale participants. Each friend who purchases earns you bonus $READS. Details shared with waitlist members first.</div></div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <h2>Don't Miss Your Early-Bird Window</h2>
+    <p>Pioneer slots are capped at 100. Once they're gone, the bonus drops permanently.</p>
+    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="cta-btn">🚀 Join the Waitlist Now</a>
+  </section>
+
+  
+  <script src="js/components.js" defer></script>
+  <script>
+    const presaleDate = new Date('2026-08-01T00:00:00');
+    function tick(){const d=presaleDate-new Date();if(d<=0)return;const p=n=>String(Math.floor(n)).padStart(2,'0');document.getElementById('cdDays').textContent=p(d/86400000);document.getElementById('cdHours').textContent=p((d%86400000)/3600000);document.getElementById('cdMins').textContent=p((d%3600000)/60000);document.getElementById('cdSecs').textContent=p((d%60000)/1000)}
+    tick();setInterval(tick,1000);
+    new IntersectionObserver(es=>{if(es[0].isIntersecting)document.getElementById('progFill').style.width='23%'}).observe(document.getElementById('progFill'));
+    function submitWaitlist(){const n=document.getElementById('wlName').value.trim(),e=document.getElementById('wlEmail').value.trim();if(!n||!e){alert('Please enter your name and email.');return}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){alert('Please enter a valid email.');return}const b=document.querySelector('.wl-btn');b.textContent='✅ You\'re on the list!';b.style.background='#1a7a4a';b.disabled=true;document.getElementById('wlSuccess').style.display='block'}
+    function toggleFAQ(el){el.parentElement.classList.toggle('open')}
+  </script>
+  <reads-footer></reads-footer>
+</body>
+</html>
