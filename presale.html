@@ -120,7 +120,39 @@
               <option value="school">School / Institution</option>
               <option value="other">Other</option>
             </select>
-            <button class="wl-btn" onclick="submitWaitlist()">🚀 Reserve My Spot — It's Free</button>
+            <button class="wl-btn" onclick="sasync function submitWaitlist() {
+  const name  = document.getElementById('wlName').value.trim();
+  const email = document.getElementById('wlEmail').value.trim();
+  const phone = document.getElementById('wlPhone').value.trim();
+  const type  = document.getElementById('wlType').value;
+
+  if (!name || !email) { alert('Please enter your name and email.'); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email.'); return; }
+
+  const btn = document.querySelector('.wl-btn');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('/api/presale', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, phone, type }),
+    });
+    if (res.ok) {
+      btn.textContent = "✅ You're on the list!";
+      btn.style.background = '#1a7a4a';
+      document.getElementById('wlSuccess').style.display = 'block';
+    } else {
+      btn.textContent = '🚀 Reserve My Spot — It\'s Free';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again.');
+    }
+  } catch {
+    btn.textContent = '🚀 Reserve My Spot — It\'s Free';
+    btn.disabled = false;
+    alert('Network error. Please try again.');
+  }">🚀 Reserve My Spot — It's Free</button>
           </div>
           <p class="wl-note">No wallet needed yet. Just your spot in line.</p>
           <div class="wl-success" id="wlSuccess">✅ You're on the list! We'll notify you the moment presale opens.</div>
