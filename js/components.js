@@ -166,7 +166,6 @@ class ReadsFooter extends HTMLElement {
         <li><a href="${prefix}token.html">Token</a></li>
         <li><a href="${prefix}tokenomics.html">Tokenomics</a></li>
         <li><a href="${prefix}whitepaper.html">Whitepaper</a></li>
-        <li><a href="${prefix}presale.html">Presale</a></li>
       </ul>
     </div>
 
