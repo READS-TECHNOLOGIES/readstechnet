@@ -165,7 +165,6 @@ class ReadsFooter extends HTMLElement {
     <div class="footer-section">
       <h4>Legal</h4>
       <ul>
-        <li><a href="${prefix}privacy-policy.html">Privacy Policy</a></li>
         <li><a href="${prefix}disclaimer.html">Disclaimer</a></li>
       </ul>
     </div>
