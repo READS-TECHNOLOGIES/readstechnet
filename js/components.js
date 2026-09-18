@@ -30,9 +30,6 @@ class ReadsNav extends HTMLElement {
       { href: `${prefix}features.html`,       label: 'Features' },
       { href: `${prefix}team.html`,           label: 'Team' },
       { href: `${prefix}token.html`,          label: 'Token' },
-      { href: `${prefix}tokenomics.html`,     label: 'Tokenomics' },
-      { href: `${prefix}whitepaper.html`,     label: 'Whitepaper' },
-      { href: `${prefix}blog.html`,           label: 'Blog' },
       { href: `${prefix}partner.html`,        label: 'Partners' },
       { href: `${prefix}contact.html`,        label: 'Contact' },
     ];
@@ -155,7 +152,6 @@ class ReadsFooter extends HTMLElement {
         <li><a href="${prefix}about.html">About Us</a></li>
         <li><a href="${prefix}features.html">Features</a></li>
         <li><a href="${prefix}team.html">Team</a></li>
-        <li><a href="${prefix}blog.html">Blog</a></li>
         <li><a href="${prefix}partner.html">Partnerships</a></li>
       </ul>
     </div>
@@ -164,8 +160,6 @@ class ReadsFooter extends HTMLElement {
       <h4>Token</h4>
       <ul>
         <li><a href="${prefix}token.html">Token</a></li>
-        <li><a href="${prefix}tokenomics.html">Tokenomics</a></li>
-        <li><a href="${prefix}whitepaper.html">Whitepaper</a></li>
       </ul>
     </div>
 
@@ -174,7 +168,6 @@ class ReadsFooter extends HTMLElement {
       <ul>
         <li><a href="${prefix}privacy-policy.html">Privacy Policy</a></li>
         <li><a href="${prefix}terms-of-service.html">Terms &amp; Conditions</a></li>
-        <li><a href="${prefix}learner-terms.html">Learner Terms &amp; Conditions</a></li>
         <li><a href="${prefix}disclaimer.html">Disclaimer</a></li>
       </ul>
     </div>

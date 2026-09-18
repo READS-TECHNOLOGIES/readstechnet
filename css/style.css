@@ -1850,7 +1850,7 @@ main.content-page h1 {
     .menu-toggle { display: none; }
 }
 
-/* ── Web Component: nav CTA link (Presale button) ── */
+/* ── Web Component: nav CTA link ── */
 .nav-links .nav-cta-link {
     background-color: var(--highlight-color);
     color: #ffffff !important;
