@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$READS — Investor &amp; Partner Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F6F1E6;
+    --paper:#FFFFFF;
+    --ink:#1E2A36;
+    --ink-soft:#54606B;
+    --gold:#C79A3C;
+    --gold-bright:#D9AE47;
+    --teal:#276E62;
+    --teal-soft:#DDEAE6;
+    --navy:#13212C;
+    --navy-2:#1C3040;
+    --line: rgba(30,42,54,0.14);
+    --line-on-navy: rgba(246,241,230,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    html{scroll-snap-type:y proximity;}
+    .slide{scroll-snap-align:start;}
+  }
+  h1,h2,h3,.serif{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  p{margin:0;}
+  .slide{
+    min-height:100svh;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    padding:7vh 8vw;
+  }
+  .slide-inner{
+    width:100%;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .slide.navy{ background:var(--navy); color:var(--cream); }
+  .slide.navy .ink-soft{ color:rgba(246,241,230,0.72); }
+  .slide.teal-line::before{ background:var(--line-on-navy); }
+
+  /* running index / progress */
+  .progress-rail{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg,var(--gold),var(--teal));
+    z-index:50; transition:width .15s ease-out;
+  }
+  .slide-index{
+    position:absolute; bottom:5vh; right:8vw;
+    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size:.85rem; color:var(--ink-soft); letter-spacing:.02em;
+  }
+  .slide.navy .slide-index{ color:rgba(246,241,230,0.55); }
+  .slide-tag{
+    font-size:.8rem; color:var(--ink-soft); margin-bottom:1.1rem;
+    font-weight:500;
+  }
+  .slide.navy .slide-tag{ color:var(--gold-bright); }
+
+  /* ===== COVER ===== */
+  .cover{
+    background:var(--navy);
+    color:var(--cream);
+    padding-top:6vh;
+    overflow:hidden;
+  }
+  .cover::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(600px 420px at 82% 18%, rgba(199,154,60,0.20), transparent 60%),
+      radial-gradient(500px 360px at 12% 88%, rgba(39,110,98,0.24), transparent 60%);
+    pointer-events:none;
+  }
+  .cover-top{
+    display:flex; align-items:center; gap:.6rem;
+    position:relative; z-index:1;
+  }
+  .cover-mark{ width:34px; height:34px; flex-shrink:0; }
+  .cover-brand{ font-size:.95rem; letter-spacing:.02em; color:rgba(246,241,230,.75); }
+  .cover-main{
+    position:relative; z-index:1;
+    margin-top:auto; margin-bottom:auto;
+    padding-top:8vh;
+  }
+  .cover-eyebrow{
+    font-size:.85rem; color:var(--gold-bright); margin-bottom:1.4rem; font-weight:500;
+  }
+  .cover-title{
+    font-size:clamp(3rem, 9vw, 6.4rem);
+    line-height:0.98;
+    color:var(--cream);
+  }
+  .cover-title em{
+    font-style:italic; color:var(--gold-bright); font-weight:400;
+  }
+  .cover-sub{
+    max-width:34rem; margin-top:2rem;
+    font-size:clamp(1.05rem,2vw,1.25rem);
+    line-height:1.6;
+    color:rgba(246,241,230,0.82);
+  }
+  .cover-foot{
+    position:relative; z-index:1;
+    margin-top:8vh;
+    display:flex; justify-content:space-between; align-items:flex-end;
+    flex-wrap:wrap; gap:1rem;
+    border-top:1px solid var(--line-on-navy);
+    padding-top:1.4rem;
+  }
+  .cover-foot-item{ font-size:.82rem; color:rgba(246,241,230,0.6); }
+  .cover-foot-item strong{ color:var(--cream); font-weight:500; display:block; margin-bottom:.2rem;}
+
+  /* ===== SHARED CONTENT BITS ===== */
+  .kicker{ display:flex; align-items:baseline; gap:.9rem; margin-bottom:2.6rem; }
+  .kicker .num{ font-family:'Fraunces',serif; font-style:italic; color:var(--gold); font-size:1.1rem; }
+  h2.headline{
+    font-size:clamp(2.1rem, 4.2vw, 3.3rem);
+    line-height:1.08;
+    max-width:26ch;
+  }
+  .lede{
+    font-size:clamp(1.02rem,1.4vw,1.15rem);
+    line-height:1.65;
+    color:var(--ink-soft);
+    max-width:46ch;
+    margin-top:1.4rem;
+  }
+  .slide.navy .lede{ color:rgba(246,241,230,0.78); }
+
+  .two-col{
+    display:grid; grid-template-columns:1fr 1fr; gap:4rem;
+    align-items:start;
+  }
+  @media (max-width:820px){ .two-col{ grid-template-columns:1fr; gap:2.4rem; } }
+
+  .stat-strip{
+    display:flex; gap:2.6rem; flex-wrap:wrap; margin-top:2.6rem;
+  }
+  .stat{ min-width:9rem; }
+  .stat .n{ font-family:'Fraunces',serif; font-size:2.1rem; color:var(--gold); }
+  .stat .l{ font-size:.85rem; color:var(--ink-soft); margin-top:.3rem; }
+  .slide.navy .stat .l{ color:rgba(246,241,230,0.65); }
+
+  .pillar-list{ list-style:none; margin:1.6rem 0 0; padding:0; }
+  .pillar-list li{
+    display:flex; gap:1rem; padding:1.1rem 0;
+    border-top:1px solid var(--line);
+    font-size:1.02rem; line-height:1.55;
+  }
+  .slide.navy .pillar-list li{ border-top:1px solid var(--line-on-navy); }
+  .pillar-list li:last-child{ border-bottom:1px solid var(--line); }
+  .slide.navy .pillar-list li:last-child{ border-bottom:1px solid var(--line-on-navy); }
+  .pillar-list .mk{ color:var(--gold); font-family:'Fraunces',serif; font-style:italic; flex-shrink:0; }
+
+  /* feature grid */
+  .feat-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+    margin-top:2.2rem;
+  }
+  @media (max-width:900px){ .feat-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .feat-grid{ grid-template-columns:1fr; } }
+  .feat-cell{
+    background:var(--paper); padding:1.6rem 1.5rem; min-height:11rem;
+    display:flex; flex-direction:column; gap:.8rem;
+  }
+  .feat-cell svg{ width:26px; height:26px; }
+  .feat-cell h3{ font-size:1.02rem; font-weight:600; font-family:'Inter',sans-serif; letter-spacing:0;}
+  .feat-cell p{ font-size:.9rem; color:var(--ink-soft); line-height:1.5; }
+
+  /* how it works */
+  .flow{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:3rem;
+    position:relative;
+  }
+  @media (max-width:820px){ .flow{ grid-template-columns:1fr; gap:1.8rem; } }
+  .flow-step{ position:relative; padding-right:1.6rem; }
+  .flow-step .fnum{
+    font-family:'Fraunces',serif; font-style:italic; color:var(--gold-bright);
+    font-size:1.6rem; display:block; margin-bottom:.8rem;
+  }
+  .flow-step h3{ font-size:1.05rem; font-weight:600; font-family:'Inter',sans-serif; margin-bottom:.5rem;}
+  .flow-step p{ font-size:.88rem; color:rgba(246,241,230,0.72); line-height:1.55; }
+  .flow-step:not(:last-child)::after{
+    content:""; position:absolute; top:.5rem; right:0; width:1px; height:80%;
+    background:var(--line-on-navy);
+  }
+  @media (max-width:820px){ .flow-step:not(:last-child)::after{ display:none; } }
+
+  /* dual chain */
+  .chain-grid{ display:grid; grid-template-columns:1fr auto 1fr; gap:1.6rem; align-items:stretch; margin-top:2.6rem; }
+  @media (max-width:820px){ .chain-grid{ grid-template-columns:1fr; } .chain-arrow{ transform:rotate(90deg); margin:0 auto;} }
+  .chain-card{
+    background:var(--paper); border:1px solid var(--line); padding:1.8rem 1.7rem;
+  }
+  .chain-card .chain-name{ font-family:'Fraunces',serif; font-size:1.5rem; margin-bottom:.3rem; }
+  .chain-card .chain-role{ font-size:.82rem; color:var(--gold); font-weight:600; margin-bottom:1.1rem; }
+  .chain-card ul{ margin:0; padding-left:1.1rem; }
+  .chain-card li{ font-size:.9rem; line-height:1.55; color:var(--ink-soft); margin-bottom:.55rem; }
+  .chain-arrow{ align-self:center; color:var(--gold); }
+  .chain-note{
+    margin-top:1.8rem; padding:1.2rem 1.4rem; background:var(--teal-soft);
+    border-left:3px solid var(--teal); font-size:.9rem; line-height:1.6; color:var(--ink);
+    max-width:56rem;
+  }
+
+  /* token */
+  .token-card{
+    border:1px solid var(--line-on-navy); padding:1.6rem 1.7rem; background:rgba(246,241,230,0.04);
+  }
+  .token-card h3{ font-family:'Inter',sans-serif; font-weight:600; font-size:.95rem; margin-bottom:1rem; color:var(--gold-bright);}
+  .kv{ display:flex; justify-content:space-between; padding:.55rem 0; border-top:1px solid var(--line-on-navy); font-size:.9rem;}
+  .kv:first-of-type{ border-top:none; }
+  .kv b{ font-weight:500; color:var(--cream); }
+  .kv span{ color:rgba(246,241,230,0.65); }
+  .dist-bar{ display:flex; width:100%; height:14px; border-radius:2px; overflow:hidden; margin-top:.4rem;}
+  .dist-legend{ list-style:none; margin:1.1rem 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:.6rem 1.2rem;}
+  .dist-legend li{ font-size:.84rem; display:flex; gap:.55rem; align-items:baseline; color:rgba(246,241,230,0.8);}
+  .swatch{ width:9px; height:9px; border-radius:1px; flex-shrink:0; margin-top:.3rem;}
+
+  /* market */
+  .market-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:3.5rem; margin-top:2.2rem; align-items:center;}
+  @media (max-width:820px){ .market-grid{ grid-template-columns:1fr; } }
+  .bignum{ font-family:'Fraunces',serif; font-size:clamp(3rem,7vw,5.2rem); line-height:1; color:var(--gold); }
+  .bignum + p{ margin-top:.8rem; font-size:.95rem; color:var(--ink-soft); max-width:26ch; }
+  .exam-tags{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.6rem; }
+  .exam-tags span{
+    border:1px solid var(--line); padding:.35rem .8rem; font-size:.82rem; border-radius:999px; color:var(--ink-soft);
+  }
+
+  /* business model */
+  .model-list{ list-style:none; margin:2rem 0 0; padding:0; display:grid; gap:0; }
+  .model-row{
+    display:grid; grid-template-columns:2.4rem 1fr; gap:1.2rem;
+    padding:1.3rem 0; border-top:1px solid var(--line);
+  }
+  .model-row:last-child{ border-bottom:1px solid var(--line); }
+  .model-row .mm{ font-family:'Fraunces',serif; font-style:italic; color:var(--gold); font-size:1.15rem;}
+  .model-row h3{ font-family:'Inter',sans-serif; font-weight:600; font-size:1rem; margin-bottom:.3rem;}
+  .model-row p{ font-size:.9rem; color:var(--ink-soft); line-height:1.55; max-width:48ch;}
+
+  /* roadmap */
+  .road{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.4rem; margin-top:3rem; }
+  @media (max-width:820px){ .road{ grid-template-columns:1fr; } }
+  .road-item{ border-top:2px solid var(--gold); padding-top:1rem; }
+  .road-item .rp{ font-size:.78rem; color:var(--ink-soft); margin-bottom:.5rem; }
+  .road-item h3{ font-family:'Inter',sans-serif; font-weight:600; font-size:1rem; margin-bottom:.5rem;}
+  .road-item p{ font-size:.87rem; color:var(--ink-soft); line-height:1.5;}
+
+  /* team */
+  .team-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:2rem 2.2rem; margin-top:2.6rem;}
+  @media (max-width:820px){ .team-grid{ grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .team-grid{ grid-template-columns:1fr;} }
+  .team-card{ display:flex; gap:1rem; align-items:flex-start; }
+  .avatar{
+    width:3rem; height:3rem; border-radius:50%; flex-shrink:0;
+    border:1px solid var(--gold); display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-style:italic; color:var(--gold); font-size:1.1rem;
+  }
+  .team-card h3{ font-family:'Inter',sans-serif; font-weight:600; font-size:.95rem; margin-bottom:.15rem;}
+  .team-card .role{ font-size:.8rem; color:var(--gold); margin-bottom:.4rem; display:block;}
+  .team-card p{ font-size:.85rem; color:var(--ink-soft); line-height:1.5;}
+
+  /* ask / final */
+  .ask-links{ display:flex; flex-wrap:wrap; gap:.9rem; margin-top:2.4rem; }
+  .ask-links a{
+    display:inline-flex; align-items:center; gap:.5rem;
+    padding:.85rem 1.4rem; border:1px solid rgba(246,241,230,0.35);
+    color:var(--cream); text-decoration:none; font-size:.9rem; font-weight:500;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .ask-links a.primary{ background:var(--gold-bright); color:var(--navy); border-color:var(--gold-bright); font-weight:600;}
+  .ask-links a:hover{ border-color:var(--gold-bright); }
+  .legal-note{
+    margin-top:4rem; padding-top:1.6rem; border-top:1px solid var(--line-on-navy);
+    font-size:.78rem; line-height:1.6; color:rgba(246,241,230,0.5); max-width:52rem;
+  }
+
+  ::selection{ background:var(--gold-bright); color:var(--navy); }
+
+  /* ===== DESKTOP ===== */
+  @media (min-width:1100px){
+    .slide{ padding:6vh clamp(4rem,7vw,7rem); }
+    .slide-inner{ max-width:1320px; }
+    h2.headline{ font-size:clamp(2.6rem,3.6vw,3.9rem); max-width:28ch; }
+    .lede{ font-size:1.18rem; max-width:52ch; }
+    .cover-sub{ max-width:40rem; }
+    .two-col{ gap:6rem; }
+    .stat-strip{ gap:3.6rem; }
+    .feat-grid{ margin-top:3rem; }
+    .feat-cell{ padding:2.1rem 1.9rem; min-height:12.5rem; }
+    .chain-grid{ gap:2.4rem; }
+    .chain-card{ padding:2.2rem 2.3rem; }
+    .team-grid{ gap:2.4rem 3rem; }
+    .model-row p, .chain-card li{ max-width:56ch; }
+    .slide-index{ font-size:.92rem; }
+  }
+  @media (min-width:1500px){
+    .slide-inner{ max-width:1440px; }
+    h2.headline{ font-size:clamp(2.8rem,3.4vw,4.3rem); }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-rail" id="rail"></div>
+
+<!-- 00 COVER -->
+<section class="slide cover" id="s0">
+  <div class="slide-inner" style="display:flex;flex-direction:column;height:100%;min-height:86svh;">
+    <div class="cover-top">
+      <svg class="cover-mark" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="22" stroke="#D9AE47" stroke-width="1.4"/>
+        <path d="M13 21L24 15L35 21L24 27L13 21Z" stroke="#D9AE47" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M17 23.5V29C17 29 20 32 24 32C28 32 31 29 31 29V23.5" stroke="#D9AE47" stroke-width="1.4"/>
+      </svg>
+      <span class="cover-brand">READS Technologies</span>
+    </div>
+    <div class="cover-main">
+      <p class="cover-eyebrow">Investor &amp; partner overview — 2026</p>
+      <h1 class="cover-title">Study smart.<br>Learn. <em>Earn.</em> Excel.</h1>
+      <p class="cover-sub">$READS is a Learn-to-Earn platform that turns exam preparation into real economic opportunity — starting with Nigeria's JAMB, WAEC, NECO and BECE candidates, and built to travel further.</p>
+    </div>
+    <div class="cover-foot">
+      <div class="cover-foot-item"><strong>Sector</strong>EdTech × Blockchain</div>
+      <div class="cover-foot-item"><strong>Rewards chain</strong>Stellar (XLM)</div>
+      <div class="cover-foot-item"><strong>Records chain</strong>Cardano (ADA)</div>
+      <div class="cover-foot-item"><strong>Site</strong>readstechnet.vercel.app</div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 PROBLEM -->
+<section class="slide" id="s1">
+  <div class="slide-inner">
+    <div class="kicker"><span class="num">01</span><span class="slide-tag">The problem</span></div>
+    <h2 class="headline">Millions of students study for exams that owe them nothing back.</h2>
+    <ul class="pillar-list">
+      <li><span class="mk">—</span><span>Every year, Nigerian students sit JAMB, WAEC, NECO and BECE in enormous numbers, but none of that study time converts into anything they can use — no reward, no record, no proof of the effort itself.</span></li>
+      <li><span class="mk">—</span><span>Exam registration fees, past questions and tutoring are real costs. Families who can least afford to fail an exam are the ones who pay again when it happens.</span></li>
+      <li><span class="mk">—</span><span>Most CBT prep tools are one-off products: no continuity, no incentive loop, no way for a learner's achievement to travel with them beyond a single app.</span></li>
+    </ul>
+  </div>
+  <span class="slide-index">01 / 12</span>
+</section>
+
+<!-- 02 SOLUTION -->
+<section class="slide navy" id="s2">
+  <div class="slide-inner two-col">
+    <div>
+      <div class="kicker"><span class="num" style="color:var(--gold-bright)">02</span><span class="slide-tag">The solution</span></div>
+      <h2 class="headline">Turn every study session into something you can spend.</h2>
+      <p class="lede">$READS pairs an exam-grade CBT practice engine with a token reward layer. Students study, get tested under real exam conditions, and earn $READS for demonstrated mastery — tokens they can use inside the platform itself.</p>
+    </div>
+    <div class="stat-strip">
+      <div class="stat"><div class="n">6</div><div class="l">Exams covered: JAMB, WAEC, NECO, BECE, IELTS, SAT</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">Chains, each doing the job it's suited for</div></div>
+      <div class="stat"><div class="n">100B</div><div class="l">$READS total supply</div></div>
+    </div>
+  </div>
+  <span class="slide-index">02 / 12</span>
+</section>
+
+<!-- 03 PRODUCT -->
+<section class="slide" id="s3">
+  <div class="slide-inner">
+    <div class="kicker"><span class="num">03</span><span class="slide-tag">Product</span></div>
+    <h2 class="headline">One ecosystem — blockchain, AI and exam prep, working together.</h2>
+    <div class="feat-grid">
+      <div class="feat-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.4"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5Z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5Z"/></svg>
+        <h3>Learn-to-earn rewards</h3>
+        <p>Structured lessons and quizzes pay out $READS the moment a module is completed.</p>
+      </div>
+      <div class="feat-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.4"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <h3>CBT practice exams</h3>
+        <p>Real exam-condition simulations for JAMB, WAEC, NECO, SAT and IELTS with instant scoring.</p>
+      </div>
+      <div class="feat-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.4"><path d="M4 5h16v11H8l-4 4V5Z"/><circle cx="9" cy="10.5" r=".6" fill="var(--gold)" stroke="none"/><circle cx="12" cy="10.5" r=".6" fill="var(--gold)" stroke="none"/><circle cx="15" cy="10.5" r=".6" fill="var(--gold)" stroke="none"/></svg>
+        <h3>AI tutor chat</h3>
+        <p>A 24/7 study companion for explanations, personalised tips and interactive Q&amp;A.</p>
+      </div>
+      <div class="feat-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.4"><path d="M4 19V9M11 19V5M18 19v-7"/></svg>
+        <h3>AI study advisor</h3>
+        <p>Performance analytics that surface weak areas and recommend what to study next.</p>
+      </div>
+      <div class="feat-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.4"><circle cx="12" cy="9" r="5"/><path d="M9 13.5 7.5 21 12 18.5 16.5 21 15 13.5"/></svg>
+        <h3>Blockchain certificates</h3>
+        <p>Verifiable, permanent proof of achievement — anchored on-chain, accessible anywhere.</p>
+      </div>
+      <div class="feat-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.4"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        <h3>Freemium &amp; premium</h3>
+        <p>Free access with standard rewards; premium unlocks double earnings and advanced tools.</p>
+      </div>
+      <div class="feat-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.4"><path d="M12 2v20M6 6l12 12M18 6 6 18"/></svg>
+        <h3>Exam fee payments</h3>
+        <p>Learners pay national and international exam registration fees directly in $READS.</p>
+      </div>
+      <div class="feat-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.4"><path d="M4 12a8 8 0 0 1 14-5M20 12a8 8 0 0 1-14 5"/><path d="M18 4v3h-3M6 20v-3h3"/></svg>
+        <h3>USSD &amp; offline access</h3>
+        <p>Balance checks, exam registration and rewards, reachable without a smartphone or data.</p>
+      </div>
+      <div class="feat-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.4"><path d="M4 8h16l-1.5 11H5.5L4 8Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg>
+        <h3>Educational marketplace</h3>
+        <p>A peer-to-peer market for eBooks, courses and study materials, priced in $READS.</p>
+      </div>
+    </div>
+  </div>
+  <span class="slide-index">03 / 12</span>
+</section>
+
+<!-- 04 HOW IT WORKS -->
+<section class="slide navy" id="s4">
+  <div class="slide-inner">
+    <div class="kicker"><span class="num" style="color:var(--gold-bright)">04</span><span class="slide-tag">How it works</span></div>
+    <h2 class="headline">From opening a lesson to holding a reward, in four steps.</h2>
+    <div class="flow">
+      <div class="flow-step"><span class="fnum">01</span><h3>Study &amp; practice</h3><p>Learners work through curated lessons and CBT-style quizzes built around the real syllabus.</p></div>
+      <div class="flow-step"><span class="fnum">02</span><h3>Prove mastery</h3><p>Quizzes and mock exams run under monitored, anti-cheat conditions before anything is rewarded.</p></div>
+      <div class="flow-step"><span class="fnum">03</span><h3>Earn $READS</h3><p>Verified performance triggers a token payout, settled straight to the learner's wallet.</p></div>
+      <div class="flow-step"><span class="fnum">04</span><h3>Spend or hold</h3><p>Pay exam fees, unlock premium tools, buy marketplace content, or simply hold the balance.</p></div>
+    </div>
+  </div>
+  <span class="slide-index">04 / 12</span>
+</section>
+
+<!-- 05 DUAL CHAIN -->
+<section class="slide" id="s5">
+  <div class="slide-inner">
+    <div class="kicker"><span class="num">05</span><span class="slide-tag">Architecture</span></div>
+    <h2 class="headline">Two chains, each carrying the work it's actually good at.</h2>
+    <p class="lede">$READS rewards run on Stellar. $READS certificates and academic records live on Cardano. The split is deliberate, not incidental.</p>
+    <div class="chain-grid">
+      <div class="chain-card">
+        <div class="chain-name">Stellar</div>
+        <div class="chain-role">Rewards &amp; payments</div>
+        <ul>
+          <li>Distributes every learner reward and handles in-platform token payments.</li>
+          <li>Sub-cent fees and settlement in seconds, built for high-volume, small-value transfers.</li>
+          <li>No per-transaction minimum-balance requirement standing between a student and their reward.</li>
+        </ul>
+      </div>
+      <svg class="chain-arrow" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="chain-card">
+        <div class="chain-name">Cardano</div>
+        <div class="chain-role">Certificates &amp; records</div>
+        <ul>
+          <li>Anchors blockchain-issued certificates and academic credentials permanently.</li>
+          <li>Chosen for durability and verifiability — a record meant to last, not to move often.</li>
+          <li>Every $READS credential remains independently checkable on-chain, worldwide.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="chain-note">Cardano requires locking at least 2 ADA in every transaction output — a real cost when you're paying out thousands of small rewards as a bootstrapped startup. Stellar removes that overhead entirely for rewards, while Cardano stays exactly where it's strongest: permanent, tamper-proof records.</p>
+  </div>
+  <span class="slide-index">05 / 12</span>
+</section>
+
+<!-- 06 TOKEN -->
+<section class="slide navy" id="s6">
+  <div class="slide-inner two-col">
+    <div>
+      <div class="kicker"><span class="num" style="color:var(--gold-bright)">06</span><span class="slide-tag">The token</span></div>
+      <h2 class="headline">$READS — the unit of value across the ecosystem.</h2>
+      <div class="token-card" style="margin-top:2.2rem;">
+        <h3>Token details</h3>
+        <div class="kv"><b>Network</b><span>Stellar (XLM)</span></div>
+        <div class="kv"><b>Symbol</b><span>$READS</span></div>
+        <div class="kv"><b>Total supply</b><span>100,000,000,000</span></div>
+        <div class="kv"><b>Utility</b><span>Premium access · exams · marketplace · governance*</span></div>
+      </div>
+      <p class="lede" style="font-size:.78rem;margin-top:.8rem;">*Governance rights are planned for a future development phase.</p>
+    </div>
+    <div>
+      <h3 style="font-family:'Inter',sans-serif;font-weight:600;font-size:.95rem;color:var(--gold-bright);margin-bottom:1rem;">Distribution</h3>
+      <div class="dist-bar">
+        <div style="width:60%;background:var(--gold-bright);"></div>
+        <div style="width:15%;background:var(--teal);"></div>
+        <div style="width:10%;background:#7C8A97;"></div>
+        <div style="width:10%;background:#3F5568;"></div>
+        <div style="width:5%;background:#B0774F;"></div>
+      </div>
+      <ul class="dist-legend">
+        <li><span class="swatch" style="background:var(--gold-bright);"></span>60% — Learn-to-earn rewards</li>
+        <li><span class="swatch" style="background:var(--teal);"></span>15% — Marketing &amp; partnerships</li>
+        <li><span class="swatch" style="background:#7C8A97;"></span>10% — Ecosystem development</li>
+        <li><span class="swatch" style="background:#3F5568;"></span>10% — Team &amp; advisors (vested)</li>
+        <li><span class="swatch" style="background:#B0774F;"></span>5% — Liquidity &amp; reserves</li>
+      </ul>
+    </div>
+  </div>
+  <span class="slide-index">06 / 12</span>
+</section>
+
+<!-- 07 MARKET -->
+<section class="slide" id="s7">
+  <div class="slide-inner market-grid">
+    <div>
+      <div class="kicker"><span class="num">07</span><span class="slide-tag">Market</span></div>
+      <h2 class="headline">A captive, recurring, high-stakes audience — every single year.</h2>
+      <p class="lede">JAMB's UTME alone drew a record 2.24 million registered candidates in 2026, up from 2.03 million in 2025. That's before WAEC, NECO and BECE candidates, or the IELTS and SAT students layered on top.</p>
+      <div class="exam-tags">
+        <span>JAMB</span><span>WAEC</span><span>NECO</span><span>BECE</span><span>IELTS</span><span>SAT</span>
+      </div>
+    </div>
+    <div>
+      <div class="bignum">2.24M</div>
+      <p>UTME candidates registered for 2026 — a 10.5% year-on-year increase, and the highest on record.</p>
+    </div>
+  </div>
+  <span class="slide-index">07 / 12</span>
+</section>
+
+<!-- 08 BUSINESS MODEL -->
+<section class="slide" id="s8">
+  <div class="slide-inner">
+    <div class="kicker"><span class="num">08</span><span class="slide-tag">Business model</span></div>
+    <h2 class="headline">Revenue grows alongside the learners it rewards.</h2>
+    <div class="model-list">
+      <div class="model-row"><span class="mm">—</span><div><h3>Premium subscriptions</h3><p>Upgraded tier for double token earnings, exclusive AI tools and advanced learning paths.</p></div></div>
+      <div class="model-row"><span class="mm">—</span><div><h3>Marketplace fees</h3><p>A cut of peer-to-peer sales as tutors and creators monetise eBooks, courses and study materials.</p></div></div>
+      <div class="model-row"><span class="mm">—</span><div><h3>Exam fee facilitation</h3><p>Partnered schools and exam centres process registration payments in $READS through the platform.</p></div></div>
+      <div class="model-row"><span class="mm">—</span><div><h3>Institutional partnerships</h3><p>Licensing and integration with schools, tutorial centres and exam boards as the network expands.</p></div></div>
+    </div>
+  </div>
+  <span class="slide-index">08 / 12</span>
+</section>
+
+<!-- 09 ROADMAP -->
+<section class="slide navy" id="s9">
+  <div class="slide-inner">
+    <div class="kicker"><span class="num" style="color:var(--gold-bright)">09</span><span class="slide-tag">Roadmap</span></div>
+    <h2 class="headline">A staged rollout, proven with one school before it's opened to millions.</h2>
+    <div class="road">
+      <div class="road-item"><div class="rp">Phase 1</div><h3>Closed beta</h3><p>Launching with a first institutional school partner, currently being finalised.</p></div>
+      <div class="road-item"><div class="rp">Phase 2</div><h3>Community rollout</h3><p>Opening up through WhatsApp, Telegram and TikTok communities to build early adoption.</p></div>
+      <div class="road-item"><div class="rp">Phase 3</div><h3>Institutional partnerships</h3><p>Working with EdTech fellowships, exam boards and state ministries of education.</p></div>
+      <div class="road-item"><div class="rp">Phase 4</div><h3>Token &amp; product launch</h3><p>Full public launch of the platform alongside the $READS token, once the product and rewards infrastructure are ready.</p></div>
+    </div>
+  </div>
+  <span class="slide-index">09 / 12</span>
+</section>
+
+<!-- 10 TEAM -->
+<section class="slide" id="s10">
+  <div class="slide-inner">
+    <div class="kicker"><span class="num">10</span><span class="slide-tag">Team</span></div>
+    <h2 class="headline">A small team, built to cover the whole stack.</h2>
+    <div class="team-grid">
+      <div class="team-card"><div class="avatar">G</div><div><h3>Greatname</h3><span class="role">Founder &amp; Product Lead</span><p>Owns product direction and ties the platform, token and partnerships together.</p></div></div>
+      <div class="team-card"><div class="avatar">AI</div><div><h3>AI Engineer</h3><span class="role">Tutor &amp; analytics</span><p>Builds the AI tutor and the study-advisor analytics that guide each learner.</p></div></div>
+      <div class="team-card"><div class="avatar">BE</div><div><h3>Backend Engineer</h3><span class="role">Platform &amp; infrastructure</span><p>Runs the systems behind rewards, accounts and exam-engine logic.</p></div></div>
+      <div class="team-card"><div class="avatar">FE</div><div><h3>Frontend Engineer</h3><span class="role">Product experience</span><p>Builds the learner-facing app and dashboards across web and mobile.</p></div></div>
+      <div class="team-card"><div class="avatar">SC</div><div><h3>Smart Contract Specialist</h3><span class="role">Stellar &amp; Cardano</span><p>Owns the reward-distribution and certificate-anchoring logic on both chains.</p></div></div>
+      <div class="team-card"><div class="avatar">CS</div><div><h3>Cybersecurity Officer</h3><span class="role">Trust &amp; integrity</span><p>Secures wallets, accounts and the exam engine's anti-cheat systems.</p></div></div>
+    </div>
+  </div>
+  <span class="slide-index">10 / 12</span>
+</section>
+
+<!-- 11 ASK -->
+<section class="slide navy" id="s11">
+  <div class="slide-inner two-col">
+    <div>
+      <div class="kicker"><span class="num" style="color:var(--gold-bright)">11</span><span class="slide-tag">The ask</span></div>
+      <h2 class="headline">We're pre-launch, and building this with the people who'll use it.</h2>
+      <p class="lede">We're looking for schools, exam centres and content partners to join the closed beta, and investors who want in before the token and product launch. If you're shaping the survey with us today, you're shaping what gets built.</p>
+      <div class="ask-links">
+        <a href="https://forms.gle/5QMw2KX6YrTWSMi76" class="primary">Take the pre-launch survey</a>
+        <a href="https://readstechnet.vercel.app/partner.html">Become a partner</a>
+        <a href="mailto:support@reads.com">support@reads.com</a>
+        <a href="https://readstechnet.vercel.app">readstechnet.vercel.app</a>
+      </div>
+    </div>
+    <div class="token-card">
+      <h3>What we're raising for</h3>
+      <div class="kv"><b>Product build</b><span>Engineering, infrastructure, chain integration</span></div>
+      <div class="kv"><b>Early marketing</b><span>Community growth, partner &amp; school outreach</span></div>
+    </div>
+  </div>
+  <div class="slide-inner">
+    <p class="legal-note" style="margin-top:1.6rem;">We're not running a formal seed round yet — this is an early, open conversation with partners and investors who want in before the numbers are locked down. $READS is a utility token intended for use within the $READS ecosystem. It is not an investment product, and nothing in this deck constitutes financial, investment or legal advice. Token values can be volatile; figures reflect current platform plans and may change ahead of launch. © 2026 READS Technologies.</p>
+  </div>
+  <span class="slide-index">12 / 12</span>
+</section>
+
+<script>
+  const rail = document.getElementById('rail');
+  function updateRail(){
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = h > 0 ? (window.scrollY / h) * 100 : 0;
+    rail.style.width = p + '%';
+  }
+  document.addEventListener('scroll', updateRail, {passive:true});
+  window.addEventListener('resize', updateRail);
+  updateRail();
+</script>
+
+</body>
+</html>
