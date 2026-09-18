@@ -151,7 +151,6 @@ class ReadsFooter extends HTMLElement {
         <li><a href="${prefix}index.html">Home</a></li>
         <li><a href="${prefix}about.html">About Us</a></li>
         <li><a href="${prefix}features.html">Features</a></li>
-        <li><a href="${prefix}team.html">Team</a></li>
         <li><a href="${prefix}partner.html">Partnerships</a></li>
       </ul>
     </div>
@@ -167,7 +166,6 @@ class ReadsFooter extends HTMLElement {
       <h4>Legal</h4>
       <ul>
         <li><a href="${prefix}privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="${prefix}terms-of-service.html">Terms &amp; Conditions</a></li>
         <li><a href="${prefix}disclaimer.html">Disclaimer</a></li>
       </ul>
     </div>
